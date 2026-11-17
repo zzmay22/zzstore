@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907649323,
+  "updatedAt": 1794907690650,
   "categories": [
     "TK",
     "精華液",
@@ -261,6 +261,16 @@
       "volume": "100ml",
       "expiryDate": "2028-03-25",
       "unopenedCount": 6,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907690645-nwze",
+      "name": "TK淨白面膜",
+      "category": "面膜",
+      "volume": "1片",
+      "expiryDate": "2028-12-01",
+      "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
     }
