@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794901833930,
+  "updatedAt": 1794901868458,
   "categories": [
     "化妝水",
     "精華液",
@@ -9,16 +9,5 @@
     "清潔/卸妝",
     "面膜"
   ],
-  "items": [
-    {
-      "id": "sample-2",
-      "name": "積雪草B5修護純粹精華液",
-      "category": "精華液",
-      "volume": "30ml",
-      "expiryDate": "2027-04-11",
-      "unopenedCount": 2,
-      "openedCount": 0,
-      "openedDates": []
-    }
-  ]
+  "items": []
 }
