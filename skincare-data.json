@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794906679442,
+  "updatedAt": 1794906793983,
   "categories": [
     "TK",
     "精華液",
@@ -8,5 +8,16 @@
     "清潔/卸妝",
     "面膜"
   ],
-  "items": []
+  "items": [
+    {
+      "id": "item-1794906793982-xfcx",
+      "name": "PDRN粉紅液",
+      "category": "TK",
+      "volume": "15ml",
+      "expiryDate": "2029-06-21",
+      "unopenedCount": 3,
+      "openedCount": 0,
+      "openedDates": []
+    }
+  ]
 }
