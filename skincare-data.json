@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794901824309,
+  "updatedAt": 1794901833930,
   "categories": [
     "化妝水",
     "精華液",
@@ -19,18 +19,6 @@
       "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
-    },
-    {
-      "id": "sample-3",
-      "name": "神經醯胺清爽保濕水凝乳",
-      "category": "乳液/乳霜",
-      "volume": "100ml",
-      "expiryDate": "2027-08-04",
-      "unopenedCount": 1,
-      "openedCount": 1,
-      "openedDates": [
-        "2026-11-07"
-      ]
     }
   ]
 }
