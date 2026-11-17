@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794906994241,
+  "updatedAt": 1794907025161,
   "categories": [
     "TK",
     "精華液",
@@ -36,6 +36,16 @@
       "volume": "50ml",
       "expiryDate": "2028-06-06",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907025159-ar6c",
+      "name": "VEP液",
+      "category": "TK",
+      "volume": "50ml",
+      "expiryDate": "2029-02-25",
+      "unopenedCount": 4,
       "openedCount": 0,
       "openedDates": []
     }
