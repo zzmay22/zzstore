@@ -1,0 +1,60 @@
+{
+  "hasInitialized": true,
+  "updatedAt": 1794901663284,
+  "categories": [
+    "化妝水",
+    "精華液",
+    "乳液/乳霜",
+    "防曬/隔離",
+    "清潔/卸妝",
+    "面膜"
+  ],
+  "items": [
+    {
+      "id": "sample-1",
+      "name": "極潤金緻特濃保濕化妝水",
+      "category": "化妝水",
+      "volume": "170ml",
+      "expiryDate": "2026-12-29",
+      "unopenedCount": 1,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-10-23"
+      ]
+    },
+    {
+      "id": "sample-2",
+      "name": "積雪草B5修護純粹精華液",
+      "category": "精華液",
+      "volume": "30ml",
+      "expiryDate": "2027-04-11",
+      "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "sample-3",
+      "name": "神經醯胺清爽保濕水凝乳",
+      "category": "乳液/乳霜",
+      "volume": "100ml",
+      "expiryDate": "2027-08-04",
+      "unopenedCount": 1,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-11-07"
+      ]
+    },
+    {
+      "id": "sample-4",
+      "name": "溫和胺基酸潔顏慕斯",
+      "category": "清潔/卸妝",
+      "volume": "150ml",
+      "expiryDate": "2028-05-10",
+      "unopenedCount": 3,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-11-12"
+      ]
+    }
+  ]
+}
