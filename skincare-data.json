@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907345319,
+  "updatedAt": 1794907367386,
   "categories": [
     "TK",
     "精華液",
@@ -158,6 +158,16 @@
       "volume": "50ml",
       "expiryDate": "2028-09-09",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907367383-km11",
+      "name": "A醇精華",
+      "category": "TK",
+      "volume": "50ml",
+      "expiryDate": "2028-08-19",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
