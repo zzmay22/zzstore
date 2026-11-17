@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907611251,
+  "updatedAt": 1794907649323,
   "categories": [
     "TK",
     "精華液",
@@ -251,6 +251,16 @@
       "volume": "150ml",
       "expiryDate": "2027-08-13",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907649317-w14y",
+      "name": "TK潔顏霜",
+      "category": "清潔/卸妝",
+      "volume": "100ml",
+      "expiryDate": "2028-03-25",
+      "unopenedCount": 6,
       "openedCount": 0,
       "openedDates": []
     }
