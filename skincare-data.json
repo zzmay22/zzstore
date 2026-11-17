@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907484340,
+  "updatedAt": 1794907504951,
   "categories": [
     "TK",
     "精華液",
@@ -198,6 +198,16 @@
       "category": "TK保健食品",
       "volume": "1罐",
       "expiryDate": "2027-08-19",
+      "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907504947-gbge",
+      "name": "雪耳膠原粉",
+      "category": "TK保健食品",
+      "volume": "1罐",
+      "expiryDate": "2027-06-09",
       "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
