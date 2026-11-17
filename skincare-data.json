@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907025161,
+  "updatedAt": 1794907067450,
   "categories": [
     "TK",
     "精華液",
@@ -46,6 +46,16 @@
       "volume": "50ml",
       "expiryDate": "2029-02-25",
       "unopenedCount": 4,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907067449-dgfa",
+      "name": "B5液",
+      "category": "TK",
+      "volume": "50ml",
+      "expiryDate": "2028-08-18",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
