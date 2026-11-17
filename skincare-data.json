@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907067450,
+  "updatedAt": 1794907092723,
   "categories": [
     "TK",
     "精華液",
@@ -55,6 +55,16 @@
       "category": "TK",
       "volume": "50ml",
       "expiryDate": "2028-08-18",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907092721-hb30",
+      "name": "B5霜",
+      "category": "TK",
+      "volume": "30ml",
+      "expiryDate": "2028-03-16",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
