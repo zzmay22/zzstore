@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907294473,
+  "updatedAt": 1794907324317,
   "categories": [
     "TK",
     "精華液",
@@ -138,6 +138,16 @@
       "volume": "50ml",
       "expiryDate": "2028-12-11",
       "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907324313-6ppi",
+      "name": "保濕液",
+      "category": "TK",
+      "volume": "100ml",
+      "expiryDate": "2029-03-09",
+      "unopenedCount": 4,
       "openedCount": 0,
       "openedDates": []
     }
