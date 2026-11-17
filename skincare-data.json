@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907465701,
+  "updatedAt": 1794907484340,
   "categories": [
     "TK",
     "精華液",
@@ -189,6 +189,16 @@
       "volume": "1罐",
       "expiryDate": "2027-09-08",
       "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907484338-u4qg",
+      "name": "膠原蛋白粉",
+      "category": "TK保健食品",
+      "volume": "1罐",
+      "expiryDate": "2027-08-19",
+      "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
     }
