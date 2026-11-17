@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794906793983,
+  "updatedAt": 1794906963090,
   "categories": [
     "TK",
     "精華液",
@@ -16,6 +16,16 @@
       "volume": "15ml",
       "expiryDate": "2029-06-21",
       "unopenedCount": 3,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794906963088-z7ur",
+      "name": "B3控油液",
+      "category": "TK",
+      "volume": "50ml",
+      "expiryDate": "2028-09-12",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
