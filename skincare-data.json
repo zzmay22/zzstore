@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794901663284,
+  "updatedAt": 1794901819727,
   "categories": [
     "化妝水",
     "精華液",
@@ -10,18 +10,6 @@
     "面膜"
   ],
   "items": [
-    {
-      "id": "sample-1",
-      "name": "極潤金緻特濃保濕化妝水",
-      "category": "化妝水",
-      "volume": "170ml",
-      "expiryDate": "2026-12-29",
-      "unopenedCount": 1,
-      "openedCount": 1,
-      "openedDates": [
-        "2026-10-23"
-      ]
-    },
     {
       "id": "sample-2",
       "name": "積雪草B5修護純粹精華液",
