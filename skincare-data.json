@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907431518,
+  "updatedAt": 1794907465701,
   "categories": [
     "TK",
     "精華液",
@@ -178,6 +178,16 @@
       "category": "TK",
       "volume": "30ml",
       "expiryDate": "2027-03-14",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907465699-a5ua",
+      "name": "葉黃素粉",
+      "category": "TK保健食品",
+      "volume": "1罐",
+      "expiryDate": "2027-09-08",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
