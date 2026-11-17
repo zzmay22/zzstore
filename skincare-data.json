@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907324317,
+  "updatedAt": 1794907345319,
   "categories": [
     "TK",
     "精華液",
@@ -148,6 +148,16 @@
       "volume": "100ml",
       "expiryDate": "2029-03-09",
       "unopenedCount": 4,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907345317-x3nf",
+      "name": "嫩白液",
+      "category": "TK",
+      "volume": "50ml",
+      "expiryDate": "2028-09-09",
+      "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
     }
