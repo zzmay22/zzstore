@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>保養品庫存小管家｜日日美肌帖</title>
+
+  <!-- 載入 Google Fonts: Huninn (粉圓體) 與 iOS/Safari 相容 Webfont 備援 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jf-openhuninn-1.1@1.1.0/stylesheet.min.css">
+
+  <!-- 載入 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --washi-white: #FFFCF6;
+      --ink-gray: #3E3A39;
+      --coral-pink: #F2A497;
+      --yamabuki-yellow: #F6D27A;
+      --aqua-blue: #A8D3E6;
+      --wakatake-green: #B9DAA5;
+      --exp-pink-bg: #FCE0DC;   /* 剩餘 1 年內：粉紅底色 */
+      --exp-red-bg: #F7A8A8;    /* 剩餘半年內：顯眼紅底色 */
+      --exp-red-badge: #E05A5A; /* 半年內醒目紅標籤 */
+      --paper-cream: #F7F1E3;
+    }
+
+    * {
+      font-family: 'Huninn', 'jf-openhuninn-1.1', 'jf-openhuninn', 'PingFang TC', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      line-height: 1.25; /* 縮小行距，讓視覺緊湊不分散 */
+    }
+
+    body {
+      background-color: var(--washi-white);
+      color: var(--ink-gray);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      line-height: 1.25;
+      /* 日系和紙微點質感（純平塗點點） */
+      background-image: radial-gradient(#E8E0D0 1.2px, transparent 1.2px);
+      background-size: 18px 18px;
+    }
+
+    /* 繪本風 3px 墨灰粗線框與平塗立體陰影（緊湊圓角） */
+    .ehon-box {
+      border: 3px solid var(--ink-gray);
+      border-radius: 18px;
+      box-shadow: 3px 3px 0px var(--ink-gray);
+    }
+
+    .ehon-box-sm {
+      border: 3px solid var(--ink-gray);
+      border-radius: 12px;
+      box-shadow: 2px 2px 0px var(--ink-gray);
+    }
+
+    .ehon-pill {
+      border: 3px solid var(--ink-gray);
+      border-radius: 9999px;
+      box-shadow: 2px 2px 0px var(--ink-gray);
+    }
+
+    .ehon-btn {
+      border: 3px solid var(--ink-gray);
+      border-radius: 14px;
+      box-shadow: 2px 2px 0px var(--ink-gray);
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .ehon-btn:active {
+      transform: translate(1.5px, 1.5px);
+      box-shadow: 0.5px 0.5px 0px var(--ink-gray);
+    }
+
+    .ehon-input {
+      border: 3px solid var(--ink-gray);
+      border-radius: 12px;
+      background-color: var(--washi-white);
+      color: var(--ink-gray);
+      padding: 7px 11px;
+      font-size: 0.92rem;
+      line-height: 1.25;
+      outline: none;
+      transition: box-shadow 0.15s ease;
+    }
+
+    .ehon-input:focus {
+      box-shadow: 2px 2px 0px var(--ink-gray);
+      background-color: #FFFFFF;
+    }
+
+    /* 效期三階段平塗背景色 */
+    .card-safe {
+      background-color: var(--washi-white);
+    }
+    .card-year-pink {
+      background-color: var(--exp-pink-bg);
+    }
+    .card-halfyear-red {
+      background-color: var(--exp-red-bg);
+    }
+
+    /* 隱藏橫向捲軸但保留滑動功能 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* 簡單的彈跳進入動畫 */
+    @keyframes popIn {
+      0% { transform: scale(0.96); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-pop {
+      animation: popIn 0.15s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="pb-20">
+
+  <!-- 響應式主容器（手機單欄優先，平板雙欄、電腦三欄自動適應） -->
+  <div class="max-w-md md:max-w-3xl lg:max-w-6xl mx-auto px-3 sm:px-5 pt-2.5 md:pt-4">
+
+    <!-- 標題列 Header（已移除三格統計框，保持簡潔緊湊） -->
+    <header class="ehon-box bg-[#FFFCF6] px-3 sm:px-4 py-2.5 mb-2.5">
+      <div class="flex items-center justify-between gap-1.5">
+        <div class="flex items-center gap-2 min-w-0">
+          <!-- 手繪感保養瓶 SVG 圖示 -->
+          <div class="w-9 h-9 rounded-xl bg-[#F6D27A] border-[3px] border-[#3E3A39] flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 8H28V13H20V8Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M24 8V5H32" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="13" y="13" width="22" height="29" rx="7" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+              <rect x="17" y="21" width="14" height="12" rx="3" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="24" cy="27" r="2" fill="#3E3A39"/>
+            </svg>
+          </div>
+          <div class="min-w-0">
+            <h1 class="text-base sm:text-lg tracking-wide truncate">保養品庫存小管家</h1>
+            <div class="flex items-center gap-1 mt-0.5">
+              <span id="syncStatusDot" class="w-2 h-2 rounded-full bg-[#B9DAA5] border border-[#3E3A39] inline-block shrink-0"></span>
+              <span id="syncStatusText" class="text-[11px] opacity-85 truncate">☁️ 雲端連線準備中...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右側功能按鈕：分類管理 + Safari開啟/分享連結 + 電腦平板快速新增 -->
+        <div class="flex items-center gap-1.5 shrink-0">
+          <button id="headerAddBtn" onclick="openItemModal()" class="hidden md:flex ehon-btn bg-[#F2A497] px-3 py-1.5 text-xs items-center gap-1" title="新增保養品">
+            <span>＋新增品項</span>
+          </button>
+          <button id="headerCatMgrBtn" onclick="openCategoryManagerModal()" class="ehon-btn bg-[#B9DAA5] px-2.5 py-1.5 text-xs flex items-center gap-1" title="新增、改名、排序或刪除分類">
+            <span>⚙️ 分類</span>
+          </button>
+          <button onclick="openShareModal()" class="ehon-btn bg-[#F6D27A] px-2.5 py-1.5 text-xs flex items-center gap-1" title="取得 Safari 連結與分享庫存">
+            <span>🔗 Safari/分享</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 唯讀檢視模式提示橫幅（當網址帶有 ?mode=view 時顯示） -->
+    <div id="readOnlyBanner" class="hidden ehon-box-sm bg-[#A8D3E6] px-3 py-1.5 mb-2 flex items-center justify-between gap-2">
+      <div class="text-xs flex items-center gap-1">
+        <span>👀 <strong>好友唯讀模式</strong>（可瀏覽分類、效期與拆封日）</span>
+      </div>
+      <button onclick="disableReadOnlyMode()" class="ehon-btn bg-[#FFFCF6] px-2 py-1 text-[11px] shrink-0">
+        切換編輯
+      </button>
+    </div>
+
+    <!-- 主分頁切換器：分類庫存 vs 1年內到期提醒 -->
+    <nav class="grid grid-cols-2 gap-2 mb-2" aria-label="主要檢視切換">
+      <button id="tabBtnInventory" onclick="switchMainView('inventory')" class="ehon-btn py-2 px-2.5 text-sm flex items-center justify-center gap-1.5 bg-[#F6D27A]">
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="4" width="18" height="16" rx="3" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+          <path d="M7 9H17M7 14H13" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>分類庫存</span>
+        <span id="inventoryTabBadge" class="px-1.5 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#FFFCF6]">0</span>
+      </button>
+
+      <button id="tabBtnExpiring" onclick="switchMainView('expiring')" class="ehon-btn py-2 px-2.5 text-sm flex items-center justify-center gap-1 bg-[#FFFCF6] relative">
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+          <path d="M12 7V12L15 14" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>⏰ 1年內到期</span>
+        <span id="expiringTabBadge" class="px-1.5 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#F7A8A8]">0</span>
+      </button>
+    </nav>
+
+    <!-- 效期底色圖例說明條（緊湊單行） -->
+    <div class="ehon-box-sm bg-[#F7F1E3] px-2.5 py-1.5 mb-2 flex items-center justify-between sm:justify-around text-[11px]">
+      <span class="flex items-center gap-1">
+        <span class="w-3 h-3 rounded-full bg-[#F7A8A8] border-2 border-[#3E3A39] inline-block"></span>
+        <span>紅底：剩半年內</span>
+      </span>
+      <span class="flex items-center gap-1">
+        <span class="w-3 h-3 rounded-full bg-[#FCE0DC] border-2 border-[#3E3A39] inline-block"></span>
+        <span>粉紅底：剩1年內</span>
+      </span>
+      <span class="flex items-center gap-1">
+        <span class="w-3 h-3 rounded-full bg-[#FFFCF6] border-2 border-[#3E3A39] inline-block"></span>
+        <span>白底：大於1年</span>
+      </span>
+    </div>
+
+    <!-- ==================== 分頁 1：庫存清單控制區 ==================== -->
+    <div id="inventoryControls" class="mb-2.5 space-y-1.5">
+      <!-- 分類列（手機橫向滑動，平板與電腦自動換行展開） -->
+      <div class="flex items-center gap-1.5 overflow-x-auto md:flex-wrap no-scrollbar pb-0.5" id="categoryTabsContainer">
+        <!-- 由 JS 動態產生分類膠囊按鈕與「⚙️管理分類」按鈕 -->
+      </div>
+
+      <!-- 搜尋與狀態篩選列 -->
+      <div class="flex items-center gap-1.5">
+        <div class="relative flex-1">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="搜尋品名、分類或容量..."
+            oninput="renderApp()"
+            class="ehon-input w-full pl-8 pr-7 py-1.5 text-xs"
+          />
+          <svg class="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="7" stroke="#3E3A39" stroke-width="2.5"/>
+            <path d="M16 16L20 20" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <button
+            id="clearSearchBtn"
+            onclick="clearSearch()"
+            class="hidden absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#F2A497] border border-[#3E3A39] text-[10px] flex items-center justify-center"
+          >✕</button>
+        </div>
+
+        <select id="stockStatusFilter" onchange="renderApp()" class="ehon-input py-1.5 px-2 text-xs bg-[#FFFCF6] shrink-0">
+          <option value="all">全部狀態</option>
+          <option value="opened">有已拆封</option>
+          <option value="unopened">有未拆封</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ==================== 分頁 2：1年內效期提醒橫幅 ==================== -->
+    <div id="expiringReminderBanner" class="hidden ehon-box-sm bg-[#F6D27A] px-3 py-2 mb-2.5">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-lg bg-[#FFFCF6] border-2 border-[#3E3A39] flex items-center justify-center shrink-0 text-sm">
+          ⏰
+        </div>
+        <div class="text-xs">
+          <strong>一年內到期優先使用清單：</strong>已依有效日期由近到遠排序，請優先使用！
+        </div>
+      </div>
+    </div>
+
+    <!-- 保養品卡片清單容器（手機單欄、平板雙欄、電腦三欄響應式網格） -->
+    <main id="itemsListContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-3.5 items-stretch">
+      <!-- 由 JS 渲染保養品卡片 -->
+    </main>
+
+  </div>
+
+  <!-- 底部懸浮單手操作「＋新增保養品」按鈕列 -->
+  <div id="floatingAddBar" class="fixed bottom-3 left-0 right-0 z-30 px-3 pointer-events-none">
+    <div class="max-w-md mx-auto flex justify-center">
+      <button
+        onclick="openItemModal()"
+        class="pointer-events-auto ehon-btn bg-[#F6D27A] px-4 py-2.5 text-sm flex items-center gap-1.5 w-full justify-center"
+      >
+        <span class="w-5 h-5 rounded-full bg-[#FFFCF6] border-2 border-[#3E3A39] flex items-center justify-center text-base leading-none">+</span>
+        <span>新增保養品品項</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== 分類編輯管理刪除 Modal (Requirement 2) ==================== -->
+  <div id="categoryManagerModal" class="fixed inset-0 bg-[#3E3A39]/50 z-50 hidden items-center justify-center p-3">
+    <div class="ehon-box bg-[#FFFCF6] w-full max-w-md max-h-[88vh] flex flex-col p-4 animate-pop">
+      <div class="flex items-center justify-between pb-2 mb-2.5 border-b-[3px] border-[#3E3A39]">
+        <div class="flex items-center gap-1.5">
+          <span class="w-3.5 h-3.5 rounded-full bg-[#B9DAA5] border-2 border-[#3E3A39]"></span>
+          <h3 class="text-base">⚙️ 分類分頁管理（新增 / 改名 / 刪除）</h3>
+        </div>
+        <button onclick="closeCategoryManagerModal()" class="ehon-btn bg-[#F2A497] w-7 h-7 flex items-center justify-center text-xs">✕</button>
+      </div>
+
+      <!-- 新增分類輸入列 -->
+      <div class="flex gap-1.5 mb-2.5">
+        <input
+          id="newCategoryManagerInput"
+          type="text"
+          placeholder="輸入新分類名稱（如：眼霜、化妝水、面膜）"
+          onkeydown="if(event.key==='Enter'){event.preventDefault();addCategoryFromManager();}"
+          class="ehon-input flex-1 text-xs py-1.5"
+        />
+        <button type="button" onclick="addCategoryFromManager()" class="ehon-btn bg-[#B9DAA5] px-3 py-1.5 text-xs shrink-0">
+          ＋新增分類
+        </button>
+      </div>
+
+      <p class="text-[11px] opacity-75 mb-2">
+        💡 點擊分類名稱可<strong>直接修改名稱</strong>（該分類下的保養品會自動同步更新名稱）；點 <strong>↑ ↓</strong> 可調整順序；點 <strong>刪除</strong> 可移除分類。
+      </p>
+
+      <!-- 現有分類列表 -->
+      <div id="categoryManagerList" class="space-y-1.5 overflow-y-auto pr-0.5 flex-1">
+        <!-- 由 JS 動態渲染每個分類的改名、排序、刪除列 -->
+      </div>
+
+      <div class="pt-2.5 mt-2.5 border-t-2 border-dashed border-[#3E3A39] flex justify-end">
+        <button type="button" onclick="closeCategoryManagerModal()" class="ehon-btn bg-[#F6D27A] px-5 py-1.5 text-xs">
+          完成關閉
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 新增 / 編輯保養品 Modal ==================== -->
+  <div id="itemModalBackdrop" class="fixed inset-0 bg-[#3E3A39]/50 z-40 hidden items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="ehon-box bg-[#FFFCF6] w-full max-w-md max-h-[92vh] overflow-y-auto p-4 rounded-b-none sm:rounded-b-[18px] animate-pop">
+      <div class="flex items-center justify-between pb-2 mb-2.5 border-b-[3px] border-[#3E3A39]">
+        <div class="flex items-center gap-1.5">
+          <span class="w-3.5 h-3.5 rounded-full bg-[#F2A497] border-2 border-[#3E3A39]"></span>
+          <h2 id="modalTitle" class="text-base">新增保養品</h2>
+        </div>
+        <button onclick="closeItemModal()" class="ehon-btn bg-[#F2A497] w-7 h-7 flex items-center justify-center text-xs">✕</button>
+      </div>
+
+      <form id="itemForm" onsubmit="handleSaveItem(event)" class="space-y-2.5">
+        <input type="hidden" id="editingItemId" />
+
+        <!-- 品名 -->
+        <div>
+          <label class="block text-xs mb-1" for="itemNameInput">品名 <span class="text-[10px] bg-[#F2A497] px-1.5 py-0.2 rounded border border-[#3E3A39]">必填</span></label>
+          <input
+            id="itemNameInput"
+            type="text"
+            required
+            placeholder="例如：極潤保濕化妝水、小黑瓶精華..."
+            class="ehon-input w-full text-sm"
+          />
+        </div>
+
+        <!-- 分類選擇 + 快速管理分類 -->
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-xs" for="itemCategorySelect">分類</label>
+              <button type="button" onclick="toggleNewCategoryBox()" class="text-[11px] underline">+新增分類</button>
+            </div>
+            <select id="itemCategorySelect" class="ehon-input w-full text-xs py-1.5">
+              <!-- JS 動態填入分類 -->
+            </select>
+          </div>
+
+          <!-- 容量 -->
+          <div>
+            <label class="block text-xs mb-1" for="itemVolumeInput">容量 / 規格</label>
+            <input
+              id="itemVolumeInput"
+              type="text"
+              required
+              placeholder="如：200ml、50g"
+              class="ehon-input w-full text-xs py-1.5"
+            />
+          </div>
+        </div>
+
+        <!-- 新增自訂分類輸入列 -->
+        <div id="customCategoryBox" class="hidden flex gap-1.5">
+          <input
+            id="customCategoryInput"
+            type="text"
+            placeholder="輸入新分類名稱（如：眼霜、去角質）"
+            class="ehon-input flex-1 text-xs py-1.5"
+          />
+          <button type="button" onclick="addCustomCategory()" class="ehon-btn bg-[#B9DAA5] px-2.5 py-1.5 text-xs shrink-0">加入</button>
+        </div>
+
+        <!-- 快速單位按鈕 -->
+        <div class="flex items-center gap-1 flex-wrap">
+          <span class="text-[11px] opacity-75">快速填入容量單位：</span>
+          <button type="button" onclick="appendUnit('ml')" class="px-2 py-0.5 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#A8D3E6]">ml</button>
+          <button type="button" onclick="appendUnit('g')" class="px-2 py-0.5 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#B9DAA5]">g</button>
+          <button type="button" onclick="appendUnit('片')" class="px-2 py-0.5 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#F6D27A]">片</button>
+          <button type="button" onclick="appendUnit('罐')" class="px-2 py-0.5 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#F2A497]">罐</button>
+        </div>
+
+        <!-- 有效日期 + 快速日期捷徑 -->
+        <div>
+          <label class="block text-xs mb-1" for="itemExpiryInput">有效日期 <span class="text-[10px] bg-[#F6D27A] px-1.5 py-0.2 rounded border border-[#3E3A39]">剩1年粉紅底 / 剩半年紅底</span></label>
+          <input
+            id="itemExpiryInput"
+            type="date"
+            required
+            onchange="previewModalExpiryBadge()"
+            class="ehon-input w-full text-xs py-1.5"
+          />
+          <div class="flex items-center gap-1 mt-1 flex-wrap">
+            <span class="text-[11px] opacity-75">快速效期：</span>
+            <button type="button" onclick="setQuickExpiryMonths(3)" class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#F7A8A8]">+3個月(紅)</button>
+            <button type="button" onclick="setQuickExpiryMonths(5)" class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#F7A8A8]">+5個月(紅)</button>
+            <button type="button" onclick="setQuickExpiryMonths(9)" class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#FCE0DC]">+9個月(粉)</button>
+            <button type="button" onclick="setQuickExpiryMonths(18)" class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#B9DAA5]">+1年半</button>
+            <button type="button" onclick="setQuickExpiryMonths(36)" class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#B9DAA5]">+3年</button>
+          </div>
+          <!-- 即時預覽底色狀態 -->
+          <div id="modalExpiryPreview" class="mt-1.5 px-2.5 py-1 rounded-lg border-2 border-[#3E3A39] text-xs">
+            請選擇有效日期
+          </div>
+        </div>
+
+        <!-- 未拆封數 & 已拆封數 -->
+        <div class="grid grid-cols-2 gap-2">
+          <div class="ehon-box-sm bg-[#B9DAA5] p-2">
+            <label class="block text-xs text-center mb-1">未拆封數（囤貨）</label>
+            <div class="flex items-center justify-between">
+              <button type="button" onclick="stepFormUnopened(-1)" class="ehon-btn bg-[#FFFCF6] w-7 h-7 text-sm flex items-center justify-center">−</button>
+              <input id="itemUnopenedInput" type="number" min="0" value="1" class="w-10 text-center bg-transparent text-base focus:outline-none" />
+              <button type="button" onclick="stepFormUnopened(1)" class="ehon-btn bg-[#FFFCF6] w-7 h-7 text-sm flex items-center justify-center">＋</button>
+            </div>
+          </div>
+
+          <div class="ehon-box-sm bg-[#A8D3E6] p-2">
+            <label class="block text-xs text-center mb-1">已拆封數</label>
+            <div class="flex items-center justify-between">
+              <button type="button" onclick="stepFormOpened(-1)" class="ehon-btn bg-[#FFFCF6] w-7 h-7 text-sm flex items-center justify-center">−</button>
+              <input id="itemOpenedInput" type="number" min="0" value="0" onchange="syncModalOpenedDatesCount()" class="w-10 text-center bg-transparent text-base focus:outline-none" />
+              <button type="button" onclick="stepFormOpened(1)" class="ehon-btn bg-[#FFFCF6] w-7 h-7 text-sm flex items-center justify-center">＋</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 已拆封瓶數的「拆封日」清單編輯區 -->
+        <div id="modalOpenedDatesSection" class="hidden ehon-box-sm bg-[#F7F1E3] p-2.5 space-y-1.5">
+          <div class="flex items-center justify-between text-xs">
+            <span>📅 <strong>每瓶拆封日紀錄</strong>（已拆封數 -1 時會自動刪掉最早拆封日）</span>
+          </div>
+          <div id="modalOpenedDatesList" class="space-y-1">
+            <!-- JS 動態渲染每瓶拆封日的 date input -->
+          </div>
+        </div>
+
+        <!-- 儲存與取消按鈕 -->
+        <div class="flex gap-2 pt-1.5">
+          <button type="button" onclick="closeItemModal()" class="ehon-btn bg-[#FFFCF6] flex-1 py-2 text-sm">取消</button>
+          <button type="submit" class="ehon-btn bg-[#F6D27A] flex-1 py-2 text-sm">儲存品項</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== 刪除確認 Modal ==================== -->
+  <div id="deleteConfirmModal" class="fixed inset-0 bg-[#3E3A39]/50 z-50 hidden items-center justify-center p-4">
+    <div class="ehon-box bg-[#FFFCF6] w-full max-w-xs p-4 text-center animate-pop">
+      <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-[#F2A497] border-[3px] border-[#3E3A39] flex items-center justify-center text-lg">!</div>
+      <h3 class="text-base mb-1">確定要刪除嗎？</h3>
+      <p id="deleteConfirmText" class="text-xs opacity-80 mb-3">刪除後無法復原此保養品紀錄喔！</p>
+      <div class="flex gap-2">
+        <button onclick="closeDeleteModal()" class="ehon-btn bg-[#FFFCF6] flex-1 py-2 text-xs">先不要</button>
+        <button id="confirmDeleteBtn" class="ehon-btn bg-[#F7A8A8] flex-1 py-2 text-xs">確定刪除</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Safari 開啟與分享庫存網址 Modal ==================== -->
+  <div id="shareModalBackdrop" class="fixed inset-0 bg-[#3E3A39]/50 z-50 hidden items-center justify-center p-3">
+    <div class="ehon-box bg-[#FFFCF6] w-full max-w-md max-h-[90vh] overflow-y-auto p-4 animate-pop">
+      <div class="flex items-center justify-between pb-2 mb-2.5 border-b-[3px] border-[#3E3A39]">
+        <div class="flex items-center gap-1.5">
+          <span class="w-3.5 h-3.5 rounded-full bg-[#F6D27A] border-2 border-[#3E3A39]"></span>
+          <h3 class="text-base">🔗 在 Safari 開啟 ＆ 分享庫存連結</h3>
+        </div>
+        <button onclick="closeShareModal()" class="ehon-btn bg-[#F2A497] w-7 h-7 flex items-center justify-center text-xs">✕</button>
+      </div>
+
+      <!-- 為什麼需要這樣做 + 一鍵下載雲端連線版 HTML -->
+      <div class="ehon-box-sm bg-[#F6D27A] p-3 mb-2.5 space-y-2">
+        <div class="text-xs">
+          🍎 <strong>如何在 iPhone Safari 取得專屬永久網址（別人點開也能看）：</strong>
+        </div>
+        <ol class="text-xs space-y-1 list-decimal list-inside bg-[#FFFCF6] p-2.5 rounded-xl border-2 border-[#3E3A39]">
+          <li>點擊下方按鈕下載<strong>「已內建雲端同步設定的 index.html」</strong>。</li>
+          <li>打開免費免註冊網站 <strong><a href="https://tiiny.host" target="_blank" rel="noopener noreferrer" class="underline text-[#E05A5A]">Tiiny.host</a></strong> 或 <strong><a href="https://app.netlify.com/drop" target="_blank" rel="noopener noreferrer" class="underline text-[#E05A5A]">Netlify Drop</a></strong>，把該檔案上傳。</li>
+          <li>網站會立刻給您一個 <code>https://xxxx.tiiny.site</code> 網址，在 Safari 打開可「加入主畫面」，且<strong>您與朋友打開這個網址都會即時同步同一份雲端庫存！</strong></li>
+        </ol>
+        <button onclick="downloadStandaloneCloudHtml()" class="w-full ehon-btn bg-[#B9DAA5] py-2 px-3 text-xs flex items-center justify-center gap-1.5">
+          <span>📲 下載雲端同步版網頁檔 (index.html)</span>
+        </button>
+      </div>
+
+      <!-- 攜帶完整庫存資料的分享網址 (?data=...) -->
+      <div class="ehon-box-sm bg-[#F7F1E3] p-3 mb-2.5 space-y-1.5">
+        <div class="text-xs">📦 <strong>攜帶目前庫存資料的分享網址（唯讀快照）：</strong></div>
+        <p class="text-[11px] opacity-85">
+          若您已將網站放到公開網址，複製下方連結傳給朋友，網址內已直接打包您目前的保養品、效期與拆封日資料！
+        </p>
+        <div class="flex gap-1.5">
+          <input id="shareSnapshotUrlInput" type="text" readonly class="ehon-input flex-1 text-xs py-1 px-2" />
+          <button onclick="copyInputUrl('shareSnapshotUrlInput', '已複製「快照分享網址」！')" class="ehon-btn bg-[#F6D27A] px-2.5 py-1 text-xs shrink-0">複製網址</button>
+        </div>
+      </div>
+
+      <!-- 雲端同步唯讀與編輯連結 -->
+      <div class="ehon-box-sm bg-[#F7F1E3] p-3 mb-2.5 space-y-1.5">
+        <div class="text-xs">☁️ <strong>雲端即時網址（搭配上方發布後的網址使用）：</strong></div>
+        <div class="flex gap-1.5 items-center">
+          <span class="text-[11px] shrink-0">好友唯讀：</span>
+          <input id="shareReadOnlyUrlInput" type="text" readonly class="ehon-input flex-1 text-xs py-1 px-2" />
+          <button onclick="copyInputUrl('shareReadOnlyUrlInput', '已複製「好友唯讀網址」！')" class="ehon-btn bg-[#A8D3E6] px-2.5 py-1 text-xs shrink-0">複製</button>
+        </div>
+        <div class="flex gap-1.5 items-center">
+          <span class="text-[11px] shrink-0">共同編輯：</span>
+          <input id="shareEditUrlInput" type="text" readonly class="ehon-input flex-1 text-xs py-1 px-2" />
+          <button onclick="copyInputUrl('shareEditUrlInput', '已複製「共同編輯網址」！')" class="ehon-btn bg-[#B9DAA5] px-2.5 py-1 text-xs shrink-0">複製</button>
+        </div>
+      </div>
+
+      <!-- 雲端識別碼與重置範例 -->
+      <div class="pt-2 border-t-2 border-dashed border-[#3E3A39] flex items-center justify-between text-[11px]">
+        <span class="opacity-75 truncate max-w-[62%]" id="currentUserIdDisplay">連線識別碼：讀取中</span>
+        <button onclick="resetToSampleData()" class="ehon-btn bg-[#F2A497] px-2.5 py-1 text-[11px]">還原預設範例</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 輕量繪本風 Toast 訊息提示 -->
+  <div id="toastMessage" class="fixed top-3 left-1/2 -translate-x-1/2 z-50 hidden ehon-pill bg-[#F6D27A] px-3.5 py-1.5 text-xs">
+    已更新庫存！
+  </div>
+
+  <script type="module">
+    /**********************************************************
+     * 保養品庫存小管家 - 雲端即時同步、分類管理、拆封日(FIFO)邏輯
+     **********************************************************/
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // 預設保養品分類
+    const DEFAULT_CATEGORIES = [
+      '化妝水',
+      '精華液',
+      '乳液/乳霜',
+      '防曬/隔離',
+      '清潔/卸妝',
+      '面膜'
+    ];
+
+    // 應用程式狀態
+    let skincareItems = [];
+    let categories = [...DEFAULT_CATEGORIES];
+    let currentMainView = 'inventory'; // 'inventory' | 'expiring'
+    let currentCategoryFilter = '全部';
+    let pendingDeleteId = null;
+    let isReadOnlyMode = false;
+    let isUsingUrlSnapshot = false;
+    let modalTempOpenedDates = []; // 彈窗內編輯中的拆封日陣列
+
+    // 雲端連線實例
+    let db = null;
+    let auth = null;
+    let currentUser = null;
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-skincare-app';
+
+    // 取得今日 YYYY-MM-DD 字串
+    function getTodayDateString() {
+      return getOffsetDateString(0);
+    }
+
+    // 計算距離今天偏移 N 天的 YYYY-MM-DD 字串
+    function getOffsetDateString(offsetDays) {
+      const d = new Date();
+      d.setHours(0, 0, 0, 0);
+      d.setDate(d.getDate() + offsetDays);
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      return `${yyyy}-${mm}-${dd}`;
+    }
+
+    // 正規化單一品項資料（相容舊版 inUseCount 並確保 openedCount 與 openedDates 一致且由舊到新排序）
+    function normalizeItem(raw) {
+      const unopenedCount = Math.max(0, Number(raw.unopenedCount ?? raw.unopened ?? 0));
+      let openedCount = Math.max(0, Number(raw.openedCount ?? raw.inUseCount ?? raw.opened ?? 0));
+      let openedDates = Array.isArray(raw.openedDates)
+        ? raw.openedDates.filter(Boolean).map(String)
+        : [];
+
+      // 若有已拆封數但尚未紀錄拆封日，自動補上今日日期；若拆封日數量多於已拆封數則截斷
+      if (openedCount > 0 && openedDates.length < openedCount) {
+        while (openedDates.length < openedCount) {
+          openedDates.push(getTodayDateString());
+        }
+      } else if (openedCount === 0) {
+        openedDates = [];
+      } else if (openedDates.length > openedCount) {
+        openedDates.sort((a, b) => a.localeCompare(b));
+        openedDates = openedDates.slice(openedDates.length - openedCount);
+      }
+
+      // 依日期由早到晚排序（確保最早拆封日在第一個，已拆封數 -1 時優先移除最早的）
+      openedDates.sort((a, b) => a.localeCompare(b));
+
+      return {
+        id: String(raw.id || 'item-' + Date.now()),
+        name: String(raw.name || '未命名保養品'),
+        category: String(raw.category || categories[0] || '未分類'),
+        volume: String(raw.volume || ''),
+        expiryDate: String(raw.expiryDate || getOffsetDateString(365)),
+        unopenedCount,
+        openedCount,
+        openedDates
+      };
+    }
+
+    // 建立初始繪本範例資料（涵蓋：半年內紅底、一年內粉紅底、超過一年白底，含拆封日範例）
+    function createSampleItems() {
+      return [
+        normalizeItem({
+          id: 'sample-1',
+          name: '極潤金緻特濃保濕化妝水',
+          category: '化妝水',
+          expiryDate: getOffsetDateString(42), // 剩約 1.5 個月 -> 紅底色 (半年內)
+          volume: '170ml',
+          unopenedCount: 1,
+          openedCount: 1,
+          openedDates: [getOffsetDateString(-25)]
+        }),
+        normalizeItem({
+          id: 'sample-2',
+          name: '積雪草B5修護純粹精華液',
+          category: '精華液',
+          expiryDate: getOffsetDateString(145), // 剩約 4.8 個月 -> 紅底色 (半年內)
+          volume: '30ml',
+          unopenedCount: 2,
+          openedCount: 0,
+          openedDates: []
+        }),
+        normalizeItem({
+          id: 'sample-3',
+          name: '神經醯胺清爽保濕水凝乳',
+          category: '乳液/乳霜',
+          expiryDate: getOffsetDateString(260), // 剩約 8.5 個月 -> 粉紅底色 (一年內)
+          volume: '100ml',
+          unopenedCount: 1,
+          openedCount: 2,
+          openedDates: [getOffsetDateString(-40), getOffsetDateString(-5)]
+        }),
+        normalizeItem({
+          id: 'sample-4',
+          name: '溫和胺基酸雲朵潔顏慕斯',
+          category: '清潔/卸妝',
+          expiryDate: getOffsetDateString(540), // 剩約 1.5 年 -> 和紙白底色 (安心效期)
+          volume: '150ml',
+          unopenedCount: 3,
+          openedCount: 1,
+          openedDates: [getOffsetDateString(-12)]
+        })
+      ];
+    }
+
+    // 更新頂部雲端同步燈號與文字
+    function setSyncStatus(text, colorHex = '#B9DAA5') {
+      const dot = document.getElementById('syncStatusDot');
+      const label = document.getElementById('syncStatusText');
+      if (dot) dot.style.backgroundColor = colorHex;
+      if (label) label.textContent = text;
+    }
+
+    // 檢查網址參數 (?mode=view 或 ?data=...)
+    function checkUrlParameters() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('mode') === 'view') {
+        isReadOnlyMode = true;
+      }
+
+      const encodedData = params.get('data');
+      if (encodedData) {
+        try {
+          const jsonStr = decodeURIComponent(escape(atob(encodedData)));
+          const parsed = JSON.parse(jsonStr);
+          if (Array.isArray(parsed.items)) {
+            skincareItems = parsed.items.map(normalizeItem);
+            if (Array.isArray(parsed.cats) && parsed.cats.length > 0) {
+              categories = parsed.cats;
+            }
+            isUsingUrlSnapshot = true;
+            setSyncStatus('🔗 已載入分享網址庫存快照', '#A8D3E6');
+          }
+        } catch (err) {
+          console.error('解析分享網址快照失敗:', err);
+        }
+      } else if (Array.isArray(window.__INITIAL_SNAPSHOT_ITEMS)) {
+        // 若是下載後的獨立 HTML 檔案內建初始資料
+        skincareItems = window.__INITIAL_SNAPSHOT_ITEMS.map(normalizeItem);
+        if (Array.isArray(window.__INITIAL_SNAPSHOT_CATS) && window.__INITIAL_SNAPSHOT_CATS.length > 0) {
+          categories = window.__INITIAL_SNAPSHOT_CATS;
+        }
+      }
+
+      updateReadOnlyUI();
+    }
+
+    function updateReadOnlyUI() {
+      const banner = document.getElementById('readOnlyBanner');
+      const addBar = document.getElementById('floatingAddBar');
+      const catBtn = document.getElementById('headerCatMgrBtn');
+      const headerAddBtn = document.getElementById('headerAddBtn');
+      if (isReadOnlyMode) {
+        banner?.classList.remove('hidden');
+        addBar?.classList.add('hidden');
+        catBtn?.classList.add('hidden');
+        headerAddBtn?.classList.add('!hidden');
+      } else {
+        banner?.classList.add('hidden');
+        addBar?.classList.remove('hidden');
+        catBtn?.classList.remove('hidden');
+        headerAddBtn?.classList.remove('!hidden');
+      }
+    }
+
+    function disableReadOnlyMode() {
+      isReadOnlyMode = false;
+      updateReadOnlyUI();
+      renderApp();
+      showToast('✏️ 已切換為編輯模式！');
+    }
+
+    // 初始化雲端資料庫與即時監聽
+    async function initCloudSync() {
+      checkUrlParameters();
+
+      if (typeof __firebase_config === 'undefined' || !__firebase_config) {
+        if (!isUsingUrlSnapshot && skincareItems.length === 0) {
+          skincareItems = createSampleItems();
+        }
+        setSyncStatus('🔗 支援網址快照分享', '#F6D27A');
+        renderApp();
+        return;
+      }
+
+      try {
+        const firebaseConfig = typeof __firebase_config === 'string'
+          ? JSON.parse(__firebase_config)
+          : __firebase_config;
+        const app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+
+        // RULE 3: 先完成驗證再進行任何資料讀寫
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          try {
+            await signInWithCustomToken(auth, __initial_auth_token);
+          } catch (tokenErr) {
+            await signInAnonymously(auth);
+          }
+        } else {
+          await signInAnonymously(auth);
+        }
+
+        onAuthStateChanged(auth, (user) => {
+          currentUser = user;
+          const uidEl = document.getElementById('currentUserIdDisplay');
+          if (uidEl && user) {
+            uidEl.textContent = `連線帳號：${user.uid}`;
+          }
+          if (user) {
+            startRealtimeListeners();
+          }
+        });
+      } catch (err) {
+        console.error('雲端初始化失敗:', err);
+        if (skincareItems.length === 0) {
+          skincareItems = createSampleItems();
+        }
+        setSyncStatus('⚠️ 離線檢視模式', '#F2A497');
+        renderApp();
+      }
+    }
+
+    // 啟動雲端公開資料集即時監聽
+    function startRealtimeListeners() {
+      if (!currentUser || !db) return;
+
+      // RULE 1: 使用公開共享路徑 /artifacts/{appId}/public/data/{collectionName}
+      const itemsColRef = collection(db, 'artifacts', appId, 'public', 'data', 'skincare_items');
+      const configDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'skincare_settings', 'config');
+
+      // 監聽分類設定
+      onSnapshot(
+        configDocRef,
+        (docSnap) => {
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            if (Array.isArray(data.categories) && data.categories.length > 0 && !isUsingUrlSnapshot) {
+              categories = data.categories;
+              if (currentCategoryFilter !== '全部' && !categories.includes(currentCategoryFilter)) {
+                currentCategoryFilter = '全部';
+              }
+              renderApp();
+              if (!document.getElementById('categoryManagerModal').classList.contains('hidden')) {
+                renderCategoryManagerList();
+              }
+            }
+          }
+        },
+        (err) => {
+          console.error('分類同步錯誤:', err);
+        }
+      );
+
+      // 監聽保養品品項清單
+      onSnapshot(
+        itemsColRef,
+        async (snapshot) => {
+          if (isUsingUrlSnapshot) return;
+
+          const loaded = [];
+          snapshot.forEach((docSnap) => {
+            loaded.push(normalizeItem({ id: docSnap.id, ...docSnap.data() }));
+          });
+
+          // 若雲端尚未初始化任何資料，寫入初始 4 筆範例資料
+          if (loaded.length === 0 && !window.__hasSeededInitialData) {
+            window.__hasSeededInitialData = true;
+            const samples = createSampleItems();
+            skincareItems = samples;
+            renderApp();
+            await seedInitialCloudData(samples, DEFAULT_CATEGORIES);
+            return;
+          }
+
+          skincareItems = loaded;
+          setSyncStatus('☁️ 雲端即時同步中（多人可共享瀏覽）', '#B9DAA5');
+          renderApp();
+        },
+        (err) => {
+          console.error('品項同步錯誤:', err);
+          setSyncStatus('⚠️ 雲端同步受限', '#F2A497');
+        }
+      );
+    }
+
+    // 將初始範例資料寫入雲端
+    async function seedInitialCloudData(samples, cats) {
+      if (!currentUser || !db) return;
+      try {
+        const configDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'skincare_settings', 'config');
+        await setDoc(configDocRef, { categories: cats, updatedAt: Date.now() });
+
+        for (const item of samples) {
+          const itemRef = doc(db, 'artifacts', appId, 'public', 'data', 'skincare_items', item.id);
+          await setDoc(itemRef, item);
+        }
+        setSyncStatus('☁️ 雲端即時同步完成', '#B9DAA5');
+      } catch (e) {
+        console.error('寫入初始資料失敗:', e);
+      }
+    }
+
+    // 儲存單一品項至雲端
+    async function saveItemToCloud(item) {
+      if (isUsingUrlSnapshot) {
+        isUsingUrlSnapshot = false;
+      }
+      const normalized = normalizeItem(item);
+      if (!currentUser || !db) {
+        renderApp();
+        return;
+      }
+      try {
+        setSyncStatus('☁️ 正在同步至雲端...', '#F6D27A');
+        const itemRef = doc(db, 'artifacts', appId, 'public', 'data', 'skincare_items', normalized.id);
+        await setDoc(itemRef, {
+          name: normalized.name,
+          category: normalized.category,
+          volume: normalized.volume,
+          expiryDate: normalized.expiryDate,
+          unopenedCount: normalized.unopenedCount,
+          openedCount: normalized.openedCount,
+          inUseCount: normalized.openedCount, // 相容欄位
+          openedDates: normalized.openedDates,
+          updatedAt: Date.now()
+        });
+        setSyncStatus('☁️ 雲端即時同步完成', '#B9DAA5');
+      } catch (e) {
+        console.error('儲存雲端品項失敗:', e);
+        showToast('雲端儲存失敗，請稍後再試');
+      }
+    }
+
+    // 從雲端刪除單一品項
+    async function deleteItemFromCloud(itemId) {
+      if (!currentUser || !db) {
+        renderApp();
+        return;
+      }
+      try {
+        setSyncStatus('☁️ 正在同步刪除...', '#F6D27A');
+        const itemRef = doc(db, 'artifacts', appId, 'public', 'data', 'skincare_items', itemId);
+        await deleteDoc(itemRef);
+        setSyncStatus('☁️ 雲端即時同步完成', '#B9DAA5');
+      } catch (e) {
+        console.error('刪除雲端品項失敗:', e);
+      }
+    }
+
+    // 儲存分類清單至雲端
+    async function saveCategoriesToCloud() {
+      if (!currentUser || !db) {
+        renderApp();
+        return;
+      }
+      try {
+        const configDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'skincare_settings', 'config');
+        await setDoc(configDocRef, { categories, updatedAt: Date.now() }, { merge: true });
+      } catch (e) {
+        console.error('儲存分類失敗:', e);
+      }
+    }
+
+    /**
+     * 計算有效日期與今日的差距與狀態
+     * - 剩餘 <= 半年 (<= 183 天，含已過期)：紅底色 (card-halfyear-red)
+     * - 剩餘 > 半年 且 <= 1 年 (184 ~ 365 天)：粉紅底色 (card-year-pink)
+     * - 剩餘 > 1 年 (> 365 天)：和紙白底色 (card-safe)
+     */
+    function getExpiryInfo(expiryDateStr) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const parts = (expiryDateStr || '').split('-');
+      if (parts.length !== 3) {
+        return {
+          daysLeft: 9999,
+          status: 'safe',
+          cardClass: 'card-safe',
+          badgeBg: '#B9DAA5',
+          label: '🌿 效期安心',
+          isWithinOneYear: false
+        };
+      }
+
+      const expDate = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+      expDate.setHours(0, 0, 0, 0);
+
+      const diffMs = expDate.getTime() - today.getTime();
+      const daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+      if (daysLeft < 0) {
+        return {
+          daysLeft,
+          status: 'expired',
+          cardClass: 'card-halfyear-red',
+          badgeBg: '#FFFCF6',
+          label: `🚨 已過期 ${Math.abs(daysLeft)} 天`,
+          isWithinOneYear: true
+        };
+      } else if (daysLeft === 0) {
+        return {
+          daysLeft,
+          status: 'halfyear',
+          cardClass: 'card-halfyear-red',
+          badgeBg: '#F6D27A',
+          label: '🚨 今天到期！',
+          isWithinOneYear: true
+        };
+      } else if (daysLeft <= 183) {
+        const approxMonths = Math.max(1, Math.round(daysLeft / 30));
+        const timeText = daysLeft <= 45 ? `剩 ${daysLeft} 天` : `約 ${approxMonths} 個月 (${daysLeft}天)`;
+        return {
+          daysLeft,
+          status: 'halfyear',
+          cardClass: 'card-halfyear-red',
+          badgeBg: '#F6D27A',
+          label: `🚨 半年內（${timeText}）`,
+          isWithinOneYear: true
+        };
+      } else if (daysLeft <= 365) {
+        const approxMonths = Math.round(daysLeft / 30);
+        return {
+          daysLeft,
+          status: 'year',
+          cardClass: 'card-year-pink',
+          badgeBg: '#F2A497',
+          label: `🌸 1年內（約 ${approxMonths} 個月/${daysLeft}天）`,
+          isWithinOneYear: true
+        };
+      } else {
+        const approxMonths = Math.round(daysLeft / 30);
+        return {
+          daysLeft,
+          status: 'safe',
+          cardClass: 'card-safe',
+          badgeBg: '#B9DAA5',
+          label: `🌿 安心（剩約 ${approxMonths} 個月）`,
+          isWithinOneYear: false
+        };
+      }
+    }
+
+    // 依據分類名稱回傳對應的配色與手繪風小圖示 SVG
+    function getCategoryStyle(category) {
+      switch (category) {
+        case '化妝水':
+          return {
+            bg: '#A8D3E6',
+            svg: `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3C12 3 6 10 6 14.5C6 17.8 8.7 20.5 12 20.5C15.3 20.5 18 17.8 18 14.5C18 10 12 3 12 3Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/>
+            </svg>`
+          };
+        case '精華液':
+          return {
+            bg: '#F6D27A',
+            svg: `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
+              <rect x="9" y="3" width="6" height="4" rx="1" fill="#F2A497" stroke="#3E3A39" stroke-width="2"/>
+              <rect x="7" y="9" width="10" height="12" rx="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.2"/>
+              <path d="M10 7H14V9H10V7Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2"/>
+            </svg>`
+          };
+        case '乳液/乳霜':
+          return {
+            bg: '#F2A497',
+            svg: `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="10" width="16" height="10" rx="4" fill="#F2A497" stroke="#3E3A39" stroke-width="2.2"/>
+              <rect x="6" y="6" width="12" height="4" rx="2" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.2"/>
+            </svg>`
+          };
+        case '清潔/卸妝':
+          return {
+            bg: '#B9DAA5',
+            svg: `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
+              <circle cx="9" cy="14" r="5" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.2"/>
+              <circle cx="15" cy="10" r="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.2"/>
+              <circle cx="16" cy="17" r="2.5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+            </svg>`
+          };
+        case '防曬/隔離':
+          return {
+            bg: '#F6D27A',
+            svg: `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.2"/>
+              <path d="M12 3V5M12 19V21M3 12H5M19 12H21M5.6 5.6L7 7M17 17L18.4 18.4M18.4 5.6L17 7M7 17L5.6 18.4" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>`
+          };
+        default:
+          return {
+            bg: '#B9DAA5',
+            svg: `<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
+              <rect x="5" y="4" width="14" height="16" rx="4" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.2"/>
+              <circle cx="9.5" cy="10" r="1.3" fill="#3E3A39"/>
+              <circle cx="14.5" cy="10" r="1.3" fill="#3E3A39"/>
+              <path d="M9.5 14.5C10.3 15.3 13.7 15.3 14.5 14.5" stroke="#3E3A39" stroke-width="2" stroke-linecap="round"/>
+            </svg>`
+          };
+      }
+    }
+
+    // 切換主分頁（分類庫存 vs 1年內到期提醒）
+    function switchMainView(view) {
+      currentMainView = view;
+      const tabInv = document.getElementById('tabBtnInventory');
+      const tabExp = document.getElementById('tabBtnExpiring');
+      const invControls = document.getElementById('inventoryControls');
+      const expBanner = document.getElementById('expiringReminderBanner');
+
+      if (view === 'inventory') {
+        tabInv.style.backgroundColor = '#F6D27A';
+        tabExp.style.backgroundColor = '#FFFCF6';
+        invControls.classList.remove('hidden');
+        expBanner.classList.add('hidden');
+      } else {
+        tabInv.style.backgroundColor = '#FFFCF6';
+        tabExp.style.backgroundColor = '#F6D27A';
+        invControls.classList.add('hidden');
+        expBanner.classList.remove('hidden');
+      }
+
+      renderApp();
+    }
+
+    // 選擇分類分頁
+    function selectCategory(cat) {
+      currentCategoryFilter = cat;
+      renderApp();
+    }
+
+    // 清除搜尋框
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      renderApp();
+    }
+
+    // 渲染分類橫向標籤列（包含 ⚙️管理分類 按鈕）
+    function renderCategoryTabs() {
+      const container = document.getElementById('categoryTabsContainer');
+      const allCats = ['全部', ...categories];
+
+      const counts = { '全部': skincareItems.length };
+      categories.forEach(c => { counts[c] = 0; });
+      skincareItems.forEach(item => {
+        counts[item.category] = (counts[item.category] || 0) + 1;
+      });
+
+      const tabsHtml = allCats.map(cat => {
+        const isActive = currentCategoryFilter === cat;
+        const bg = isActive ? '#F2A497' : '#FFFCF6';
+        const count = counts[cat] || 0;
+        return `
+          <button
+            onclick="selectCategory('${escapeHtml(cat)}')"
+            style="background-color: ${bg};"
+            class="ehon-pill px-2.5 py-1 text-xs shrink-0 flex items-center gap-1 transition-transform active:scale-95"
+          >
+            <span>${escapeHtml(cat)}</span>
+            <span class="text-[10px] px-1.5 py-0.1 rounded-full border-2 border-[#3E3A39] bg-[#FFFCF6]">${count}</span>
+          </button>
+        `;
+      }).join('');
+
+      const manageCatBtnHtml = isReadOnlyMode ? '' : `
+        <button
+          onclick="openCategoryManagerModal()"
+          class="ehon-pill bg-[#B9DAA5] px-2.5 py-1 text-xs shrink-0 flex items-center gap-1 transition-transform active:scale-95"
+        >
+          <span>⚙️管理分類</span>
+        </button>
+      `;
+
+      container.innerHTML = tabsHtml + manageCatBtnHtml;
+    }
+
+    /**********************************************************
+     * 分類管理 Modal：新增、編輯改名、排序、刪除 (Requirement 2)
+     **********************************************************/
+    function openCategoryManagerModal() {
+      if (isReadOnlyMode) return;
+      renderCategoryManagerList();
+      const modal = document.getElementById('categoryManagerModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCategoryManagerModal() {
+      const modal = document.getElementById('categoryManagerModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      renderApp();
+    }
+
+    function renderCategoryManagerList() {
+      const listEl = document.getElementById('categoryManagerList');
+      if (!listEl) return;
+
+      // 計算各分類下的品項數量
+      const counts = {};
+      skincareItems.forEach(item => {
+        counts[item.category] = (counts[item.category] || 0) + 1;
+      });
+
+      listEl.innerHTML = categories.map((cat, idx) => {
+        const itemCount = counts[cat] || 0;
+        return `
+          <div class="ehon-box-sm bg-[#F7F1E3] p-2 flex items-center gap-1.5">
+            <!-- 排序按鈕 -->
+            <div class="flex flex-col gap-0.5 shrink-0">
+              <button
+                type="button"
+                onclick="moveCategoryOrder(${idx}, -1)"
+                ${idx === 0 ? 'disabled style="opacity:0.35"' : ''}
+                class="w-5 h-4 rounded border border-[#3E3A39] bg-[#FFFCF6] text-[10px] flex items-center justify-center"
+                title="往上移"
+              >▲</button>
+              <button
+                type="button"
+                onclick="moveCategoryOrder(${idx}, 1)"
+                ${idx === categories.length - 1 ? 'disabled style="opacity:0.35"' : ''}
+                class="w-5 h-4 rounded border border-[#3E3A39] bg-[#FFFCF6] text-[10px] flex items-center justify-center"
+                title="往下移"
+              >▼</button>
+            </div>
+
+            <!-- 直接編輯分類名稱 -->
+            <input
+              id="catEditInput_${idx}"
+              type="text"
+              value="${escapeHtml(cat)}"
+              onchange="renameCategoryAt(${idx}, this.value)"
+              class="ehon-input flex-1 text-xs py-1 px-2"
+              aria-label="分類名稱"
+            />
+
+            <span class="text-[11px] px-1.5 py-0.5 rounded-full border border-[#3E3A39] bg-[#FFFCF6] shrink-0">
+              ${itemCount}項
+            </span>
+
+            <button
+              type="button"
+              onclick="renameCategoryAt(${idx}, document.getElementById('catEditInput_${idx}').value)"
+              class="ehon-btn bg-[#A8D3E6] px-2 py-1 text-[11px] shrink-0"
+            >改名</button>
+
+            <button
+              type="button"
+              onclick="deleteCategoryAt(${idx})"
+              class="ehon-btn bg-[#F7A8A8] px-2 py-1 text-[11px] shrink-0"
+            >刪除</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 新增分類
+    async function addCategoryFromManager() {
+      const input = document.getElementById('newCategoryManagerInput');
+      const val = input.value.trim();
+      if (!val) return;
+      if (categories.includes(val)) {
+        showToast('此分類名稱已經存在囉！');
+        return;
+      }
+      categories.push(val);
+      input.value = '';
+      renderCategoryManagerList();
+      renderApp();
+      showToast(`✨ 已新增分類「${val}」`);
+      await saveCategoriesToCloud();
+    }
+
+    // 修改分類名稱（並自動更新該分類下的所有保養品）
+    async function renameCategoryAt(index, newNameRaw) {
+      const oldName = categories[index];
+      const newName = (newNameRaw || '').trim();
+      if (!oldName || !newName || oldName === newName) {
+        renderCategoryManagerList();
+        return;
+      }
+      if (categories.some((c, i) => i !== index && c === newName)) {
+        showToast('分類名稱重複，請換一個名稱');
+        renderCategoryManagerList();
+        return;
+      }
+
+      categories[index] = newName;
+      if (currentCategoryFilter === oldName) {
+        currentCategoryFilter = newName;
+      }
+
+      // 更新屬於舊分類的品項
+      const affectedItems = [];
+      skincareItems.forEach(item => {
+        if (item.category === oldName) {
+          item.category = newName;
+          affectedItems.push(item);
+        }
+      });
+
+      renderCategoryManagerList();
+      renderApp();
+      showToast(`✏️ 已將「${oldName}」改名為「${newName}」`);
+
+      await saveCategoriesToCloud();
+      for (const item of affectedItems) {
+        await saveItemToCloud(item);
+      }
+    }
+
+    // 調整分類順序
+    async function moveCategoryOrder(index, delta) {
+      const targetIndex = index + delta;
+      if (targetIndex < 0 || targetIndex >= categories.length) return;
+      const temp = categories[index];
+      categories[index] = categories[targetIndex];
+      categories[targetIndex] = temp;
+      renderCategoryManagerList();
+      renderApp();
+      await saveCategoriesToCloud();
+    }
+
+    // 刪除分類
+    async function deleteCategoryAt(index) {
+      const targetCat = categories[index];
+      if (!targetCat) return;
+
+      if (categories.length <= 1) {
+        showToast('至少需要保留 1 個分類喔！');
+        return;
+      }
+
+      categories.splice(index, 1);
+      const fallbackCat = categories[0] || '未分類';
+      if (!categories.includes(fallbackCat)) {
+        categories.push(fallbackCat);
+      }
+
+      if (currentCategoryFilter === targetCat) {
+        currentCategoryFilter = '全部';
+      }
+
+      // 若被刪除的分類底下還有保養品，自動移至第一個分類避免遺失
+      const movedItems = [];
+      skincareItems.forEach(item => {
+        if (item.category === targetCat) {
+          item.category = fallbackCat;
+          movedItems.push(item);
+        }
+      });
+
+      renderCategoryManagerList();
+      renderApp();
+
+      if (movedItems.length > 0) {
+        showToast(`🗑️ 已刪除「${targetCat}」，原品項已移至「${fallbackCat}」`);
+      } else {
+        showToast(`🗑️ 已刪除分類「${targetCat}」`);
+      }
+
+      await saveCategoriesToCloud();
+      for (const item of movedItems) {
+        await saveItemToCloud(item);
+      }
+    }
+
+    /**********************************************************
+     * 卡片數量增減 & 拆封日自動紀錄 / 最早拆封日刪除 (Requirement 3 & 4)
+     **********************************************************/
+    // 增減「未拆封數」
+    async function adjustUnopenedCount(itemId, delta) {
+      if (isReadOnlyMode) {
+        showToast('👀 目前為唯讀模式，點上方「切換編輯」即可修改');
+        return;
+      }
+      const item = skincareItems.find(i => i.id === itemId);
+      if (!item) return;
+
+      item.unopenedCount = Math.max(0, (Number(item.unopenedCount) || 0) + delta);
+      renderApp();
+      await saveItemToCloud(item);
+    }
+
+    // 增減「已拆封數」（+1 記錄今日拆封日；-1 刪掉最早拆封日）
+    async function adjustOpenedCount(itemId, delta) {
+      if (isReadOnlyMode) {
+        showToast('👀 目前為唯讀模式，點上方「切換編輯」即可修改');
+        return;
+      }
+      const item = skincareItems.find(i => i.id === itemId);
+      if (!item) return;
+
+      if (!Array.isArray(item.openedDates)) {
+        item.openedDates = [];
+      }
+      // 先確保由早到晚排序
+      item.openedDates.sort((a, b) => a.localeCompare(b));
+
+      if (delta > 0) {
+        const todayStr = getTodayDateString();
+        item.openedCount = (Number(item.openedCount) || 0) + 1;
+        item.openedDates.push(todayStr);
+        item.openedDates.sort((a, b) => a.localeCompare(b));
+        showToast(`📅 已拆封數 +1（紀錄拆封日：${todayStr}）`);
+      } else if (delta < 0) {
+        if ((Number(item.openedCount) || 0) <= 0) return;
+        item.openedCount = Math.max(0, (Number(item.openedCount) || 0) - 1);
+        const removedEarliest = item.openedDates.shift(); // 刪掉最早的拆封日
+        if (item.openedCount === 0) {
+          item.openedDates = [];
+        }
+        if (removedEarliest) {
+          showToast(`🗑️ 已拆封數 -1（已刪掉最早拆封日：${removedEarliest}）`);
+        } else {
+          showToast('🗑️ 已拆封數 -1');
+        }
+      }
+
+      renderApp();
+      await saveItemToCloud(item);
+    }
+
+    // 按下「拆封使用」：未拆封數 -1、已拆封數 +1、記錄當日為拆封日
+    async function openNewBottle(itemId) {
+      if (isReadOnlyMode) return;
+      const item = skincareItems.find(i => i.id === itemId);
+      if (!item) return;
+      if (item.unopenedCount <= 0) {
+        showToast('目前「未拆封數」為 0，沒有庫存可拆封喔！');
+        return;
+      }
+
+      const todayStr = getTodayDateString();
+      item.unopenedCount = Math.max(0, item.unopenedCount - 1);
+      item.openedCount = (Number(item.openedCount) || 0) + 1;
+
+      if (!Array.isArray(item.openedDates)) {
+        item.openedDates = [];
+      }
+      item.openedDates.push(todayStr);
+      item.openedDates.sort((a, b) => a.localeCompare(b));
+
+      renderApp();
+      showToast(`✨ 拆封一瓶「${item.name}」！拆封日：${todayStr}`);
+      await saveItemToCloud(item);
+    }
+
+    // 渲染主畫面（已移除頂部3格統計框，強化緊湊卡片與拆封日呈現）
+    function renderApp() {
+      // 1. 計算一年內到期數量與總品項數徽章
+      let expiringWithinYearCount = 0;
+      skincareItems.forEach(item => {
+        if (getExpiryInfo(item.expiryDate).isWithinOneYear) {
+          expiringWithinYearCount += 1;
+        }
+      });
+
+      const invBadge = document.getElementById('inventoryTabBadge');
+      if (invBadge) invBadge.textContent = skincareItems.length;
+      document.getElementById('expiringTabBadge').textContent = expiringWithinYearCount;
+
+      // 2. 渲染分類膠囊列
+      renderCategoryTabs();
+
+      // 3. 處理搜尋框清除按鈕顯示
+      const searchVal = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) {
+        clearBtn.classList.toggle('hidden', !searchVal);
+      }
+
+      // 4. 篩選與排序清單
+      let filtered = [...skincareItems];
+
+      if (currentMainView === 'expiring') {
+        filtered = filtered
+          .filter(item => getExpiryInfo(item.expiryDate).isWithinOneYear)
+          .sort((a, b) => (a.expiryDate || '9999-12-31').localeCompare(b.expiryDate || '9999-12-31'));
+      } else {
+        if (currentCategoryFilter !== '全部') {
+          filtered = filtered.filter(item => item.category === currentCategoryFilter);
+        }
+        if (searchVal) {
+          filtered = filtered.filter(item =>
+            (item.name || '').toLowerCase().includes(searchVal) ||
+            (item.category || '').toLowerCase().includes(searchVal) ||
+            (item.volume || '').toLowerCase().includes(searchVal)
+          );
+        }
+        const statusFilter = document.getElementById('stockStatusFilter')?.value || 'all';
+        if (statusFilter === 'opened') {
+          filtered = filtered.filter(item => Number(item.openedCount) > 0);
+        } else if (statusFilter === 'unopened') {
+          filtered = filtered.filter(item => Number(item.unopenedCount) > 0);
+        }
+        filtered.sort((a, b) => (a.expiryDate || '9999-12-31').localeCompare(b.expiryDate || '9999-12-31'));
+      }
+
+      // 5. 輸出緊湊型卡片 HTML
+      const listContainer = document.getElementById('itemsListContainer');
+      if (filtered.length === 0) {
+        if (currentMainView === 'expiring') {
+          listContainer.innerHTML = `
+            <div class="col-span-full ehon-box bg-[#FFFCF6] p-5 text-center">
+              <div class="w-10 h-10 mx-auto mb-1.5 rounded-full bg-[#B9DAA5] border-[3px] border-[#3E3A39] flex items-center justify-center text-lg">✓</div>
+              <div class="text-sm mb-0.5">目前沒有一年內到期的保養品</div>
+              <p class="text-xs opacity-75">所有庫存的效期都還超過一年，可以安心使用。</p>
+            </div>
+          `;
+        } else {
+          listContainer.innerHTML = `
+            <div class="col-span-full ehon-box bg-[#FFFCF6] p-5 text-center">
+              <div class="w-10 h-10 mx-auto mb-1.5 rounded-full bg-[#F6D27A] border-[3px] border-[#3E3A39] flex items-center justify-center text-lg">✿</div>
+              <div class="text-sm mb-0.5">這個分類目前沒有保養品喔</div>
+              <p class="text-xs opacity-75">點擊下方「＋新增保養品品項」開始建立您的庫存本吧！</p>
+            </div>
+          `;
+        }
+        return;
+      }
+
+      listContainer.innerHTML = filtered.map((item, idx) => {
+        const expInfo = getExpiryInfo(item.expiryDate);
+        const catStyle = getCategoryStyle(item.category);
+        const showPriorityRank = currentMainView === 'expiring';
+        const sortedOpenedDates = Array.isArray(item.openedDates)
+          ? [...item.openedDates].sort((a, b) => a.localeCompare(b))
+          : [];
+        const hasUnopened = Number(item.unopenedCount) > 0;
+
+        // 第五列（卡片最底部）：拆封日顯示框（移至原本底部長條按鍵的位置）
+        const openedDatesBottomHtml = `
+          <div class="ehon-box-sm bg-[#FFFCF6] px-2.5 py-1.5 flex items-center gap-1 flex-wrap text-[11px] min-h-[32px]">
+            <span class="shrink-0">📅 拆封日：</span>
+            ${sortedOpenedDates.length > 0
+              ? sortedOpenedDates.map((d, dIdx) => `
+                  <span class="px-1.5 py-0.2 rounded-md border border-[#3E3A39] ${dIdx === 0 ? 'bg-[#A8D3E6]' : 'bg-[#F7F1E3]'}">
+                    ${escapeHtml(d)}${sortedOpenedDates.length > 1 && dIdx === 0 ? ' (最早)' : ''}
+                  </span>
+                `).join('')
+              : `<span class="opacity-55">尚無拆封紀錄</span>`
+            }
+          </div>
+        `;
+
+        return `
+          <article class="ehon-box ${expInfo.cardClass} px-3 py-2.5 transition-all flex flex-col justify-between">
+            <div>
+              <!-- 第一列：分類標籤、容量 + 右側編輯刪除 -->
+              <div class="flex items-center justify-between gap-1.5 mb-1.5">
+                <div class="flex items-center gap-1 flex-wrap">
+                  ${showPriorityRank ? `
+                    <span class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#F6D27A]">
+                      #${idx + 1} 優先
+                    </span>
+                  ` : ''}
+                  <span style="background-color: ${catStyle.bg};" class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] flex items-center gap-1">
+                    ${catStyle.svg}
+                    <span>${escapeHtml(item.category)}</span>
+                  </span>
+                  <span class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39] bg-[#FFFCF6]">
+                    ${escapeHtml(item.volume || '未填')}
+                  </span>
+                </div>
+
+                ${isReadOnlyMode ? '' : `
+                  <div class="flex items-center gap-1 shrink-0">
+                    <button
+                      onclick="openItemModal('${item.id}')"
+                      class="ehon-btn bg-[#FFFCF6] px-2 py-0.5 text-[11px] rounded-full"
+                      title="編輯品項"
+                    >編輯</button>
+                    <button
+                      onclick="openDeleteModal('${item.id}')"
+                      class="ehon-btn bg-[#FFFCF6] w-6 h-6 text-[11px] rounded-full flex items-center justify-center"
+                      title="刪除品項"
+                    >✕</button>
+                  </div>
+                `}
+              </div>
+
+              <!-- 第二列：左側品名 + 右側「拆封使用」按鍵（對齊編輯與刪除下方位置） -->
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <h3 class="text-base break-words flex-1 min-w-0">${escapeHtml(item.name)}</h3>
+                ${isReadOnlyMode ? '' : `
+                  <button
+                    onclick="openNewBottle('${item.id}')"
+                    class="ehon-btn ${hasUnopened ? 'bg-[#F6D27A]' : 'bg-[#EAE5DC] opacity-55'} px-2.5 py-0.5 text-xs rounded-full shrink-0 flex items-center gap-1"
+                    title="${hasUnopened ? '未拆封-1 ➔ 已拆封+1 並記錄今日拆封日' : '目前無未拆封庫存'}"
+                  >
+                    <span>拆封使用</span>
+                  </button>
+                `}
+              </div>
+
+              <!-- 第三列：有效日期與倒數標籤 -->
+              <div class="ehon-box-sm bg-[#FFFCF6] px-2.5 py-1 mb-1.5 flex items-center justify-between gap-1 flex-wrap text-xs">
+                <span class="flex items-center gap-1">
+                  <span>🗓️ 效期：<strong>${escapeHtml(item.expiryDate)}</strong></span>
+                </span>
+                <span style="background-color: ${expInfo.badgeBg};" class="px-2 py-0.2 text-[11px] rounded-full border-2 border-[#3E3A39]">
+                  ${escapeHtml(expInfo.label)}
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <!-- 第四列：未拆封數 & 已拆封數（緊湊雙欄） -->
+              <div class="grid grid-cols-2 gap-1.5 mb-1.5">
+                <!-- 未拆封數 -->
+                <div class="ehon-box-sm bg-[#FFFCF6] px-2.5 py-1.5 flex items-center justify-between">
+                  <div>
+                    <div class="text-[10px] opacity-75">未拆封數</div>
+                    <div class="text-sm">${item.unopenedCount} <span class="text-[11px]">件</span></div>
+                  </div>
+                  ${isReadOnlyMode ? '' : `
+                    <div class="flex items-center gap-1">
+                      <button
+                        onclick="adjustUnopenedCount('${item.id}', -1)"
+                        class="ehon-btn bg-[#B9DAA5] w-6 h-6 rounded-full text-xs flex items-center justify-center"
+                        aria-label="減少未拆封數"
+                      >−</button>
+                      <button
+                        onclick="adjustUnopenedCount('${item.id}', 1)"
+                        class="ehon-btn bg-[#B9DAA5] w-6 h-6 rounded-full text-xs flex items-center justify-center"
+                        aria-label="增加未拆封數"
+                      >＋</button>
+                    </div>
+                  `}
+                </div>
+
+                <!-- 已拆封數 -->
+                <div class="ehon-box-sm bg-[#FFFCF6] px-2.5 py-1.5 flex items-center justify-between">
+                  <div>
+                    <div class="text-[10px] opacity-75">已拆封數</div>
+                    <div class="text-sm">${item.openedCount} <span class="text-[11px]">件</span></div>
+                  </div>
+                  ${isReadOnlyMode ? '' : `
+                    <div class="flex items-center gap-1">
+                      <button
+                        onclick="adjustOpenedCount('${item.id}', -1)"
+                        class="ehon-btn bg-[#A8D3E6] w-6 h-6 rounded-full text-xs flex items-center justify-center"
+                        aria-label="減少已拆封數（自動刪掉最早拆封日）"
+                      >−</button>
+                      <button
+                        onclick="adjustOpenedCount('${item.id}', 1)"
+                        class="ehon-btn bg-[#A8D3E6] w-6 h-6 rounded-full text-xs flex items-center justify-center"
+                        aria-label="增加已拆封數（自動記錄今日拆封日）"
+                      >＋</button>
+                    </div>
+                  `}
+                </div>
+              </div>
+
+              <!-- 第五列（移至最底部）：拆封日紀錄框 -->
+              ${openedDatesBottomHtml}
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    /**********************************************************
+     * 新增 / 編輯保養品 Modal 與拆封日同步邏輯
+     **********************************************************/
+    function populateCategorySelect(selectedCat) {
+      const select = document.getElementById('itemCategorySelect');
+      select.innerHTML = categories.map(cat => `
+        <option value="${escapeHtml(cat)}" ${cat === selectedCat ? 'selected' : ''}>${escapeHtml(cat)}</option>
+      `).join('');
+    }
+
+    function openItemModal(editId = null) {
+      if (isReadOnlyMode) return;
+      const backdrop = document.getElementById('itemModalBackdrop');
+      const titleEl = document.getElementById('modalTitle');
+      const idInput = document.getElementById('editingItemId');
+      const nameInput = document.getElementById('itemNameInput');
+      const volInput = document.getElementById('itemVolumeInput');
+      const expInput = document.getElementById('itemExpiryInput');
+      const unopenedInput = document.getElementById('itemUnopenedInput');
+      const openedInput = document.getElementById('itemOpenedInput');
+
+      document.getElementById('customCategoryBox').classList.add('hidden');
+
+      if (editId) {
+        const target = skincareItems.find(i => i.id === editId);
+        if (!target) return;
+        titleEl.textContent = '編輯保養品資訊';
+        idInput.value = target.id;
+        nameInput.value = target.name;
+        populateCategorySelect(target.category);
+        volInput.value = target.volume;
+        expInput.value = target.expiryDate;
+        unopenedInput.value = target.unopenedCount;
+        openedInput.value = target.openedCount;
+        modalTempOpenedDates = Array.isArray(target.openedDates)
+          ? [...target.openedDates].sort((a, b) => a.localeCompare(b))
+          : [];
+      } else {
+        titleEl.textContent = '新增保養品品項';
+        idInput.value = '';
+        nameInput.value = '';
+        const defaultCat = currentCategoryFilter !== '全部' ? currentCategoryFilter : categories[0];
+        populateCategorySelect(defaultCat);
+        volInput.value = '';
+        expInput.value = getOffsetDateString(365);
+        unopenedInput.value = 1;
+        openedInput.value = 0;
+        modalTempOpenedDates = [];
+      }
+
+      syncModalOpenedDatesCount();
+      previewModalExpiryBadge();
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+    }
+
+    function closeItemModal() {
+      const backdrop = document.getElementById('itemModalBackdrop');
+      backdrop.classList.add('hidden');
+      backdrop.classList.remove('flex');
+    }
+
+    function appendUnit(unit) {
+      const input = document.getElementById('itemVolumeInput');
+      const raw = input.value.trim().replace(/(ml|g|片|罐)$/i, '');
+      input.value = (raw || '100') + unit;
+      input.focus();
+    }
+
+    function setQuickExpiryMonths(months) {
+      const days = Math.round(months * 30.4);
+      document.getElementById('itemExpiryInput').value = getOffsetDateString(days);
+      previewModalExpiryBadge();
+    }
+
+    function previewModalExpiryBadge() {
+      const dateVal = document.getElementById('itemExpiryInput').value;
+      const previewEl = document.getElementById('modalExpiryPreview');
+      if (!dateVal) {
+        previewEl.style.backgroundColor = '#FFFCF6';
+        previewEl.textContent = '請選擇有效日期';
+        return;
+      }
+      const info = getExpiryInfo(dateVal);
+      if (info.cardClass === 'card-halfyear-red') {
+        previewEl.style.backgroundColor = '#F7A8A8';
+        previewEl.textContent = `預覽：紅底色（${info.label}）`;
+      } else if (info.cardClass === 'card-year-pink') {
+        previewEl.style.backgroundColor = '#FCE0DC';
+        previewEl.textContent = `預覽：粉紅底色（${info.label}）`;
+      } else {
+        previewEl.style.backgroundColor = '#B9DAA5';
+        previewEl.textContent = `預覽：和紙白底色（${info.label}）`;
+      }
+    }
+
+    function stepFormUnopened(delta) {
+      const el = document.getElementById('itemUnopenedInput');
+      const current = parseInt(el.value, 10) || 0;
+      el.value = Math.max(0, current + delta);
+    }
+
+    function stepFormOpened(delta) {
+      const el = document.getElementById('itemOpenedInput');
+      const current = parseInt(el.value, 10) || 0;
+      const next = Math.max(0, current + delta);
+      el.value = next;
+
+      // 排序確保最早拆封日在最前面
+      modalTempOpenedDates.sort((a, b) => a.localeCompare(b));
+      if (delta > 0) {
+        modalTempOpenedDates.push(getTodayDateString());
+      } else if (delta < 0 && modalTempOpenedDates.length > next) {
+        modalTempOpenedDates.shift(); // 刪掉最早拆封日
+      }
+      renderModalOpenedDatesInputs();
+    }
+
+    function syncModalOpenedDatesCount() {
+      const el = document.getElementById('itemOpenedInput');
+      const count = Math.max(0, parseInt(el.value, 10) || 0);
+      el.value = count;
+      modalTempOpenedDates.sort((a, b) => a.localeCompare(b));
+
+      while (modalTempOpenedDates.length < count) {
+        modalTempOpenedDates.push(getTodayDateString());
+      }
+      while (modalTempOpenedDates.length > count) {
+        modalTempOpenedDates.shift(); // 刪掉最早拆封日
+      }
+      renderModalOpenedDatesInputs();
+    }
+
+    function updateModalOpenedDateAt(idx, val) {
+      if (val) {
+        modalTempOpenedDates[idx] = val;
+      }
+    }
+
+    function renderModalOpenedDatesInputs() {
+      const section = document.getElementById('modalOpenedDatesSection');
+      const listEl = document.getElementById('modalOpenedDatesList');
+      if (modalTempOpenedDates.length === 0) {
+        section.classList.add('hidden');
+        listEl.innerHTML = '';
+        return;
+      }
+      section.classList.remove('hidden');
+      listEl.innerHTML = modalTempOpenedDates.map((dateStr, idx) => `
+        <div class="flex items-center gap-1.5">
+          <span class="text-[11px] w-20 shrink-0">第 ${idx + 1} 瓶${idx === 0 && modalTempOpenedDates.length > 1 ? '(最早)' : ''}：</span>
+          <input
+            type="date"
+            value="${escapeHtml(dateStr)}"
+            onchange="updateModalOpenedDateAt(${idx}, this.value)"
+            class="ehon-input flex-1 text-xs py-1 px-2"
+          />
+        </div>
+      `).join('');
+    }
+
+    function toggleNewCategoryBox() {
+      const box = document.getElementById('customCategoryBox');
+      box.classList.toggle('hidden');
+      if (!box.classList.contains('hidden')) {
+        document.getElementById('customCategoryInput').focus();
+      }
+    }
+
+    async function addCustomCategory() {
+      const input = document.getElementById('customCategoryInput');
+      const val = input.value.trim();
+      if (!val) return;
+      if (!categories.includes(val)) {
+        categories.push(val);
+        await saveCategoriesToCloud();
+      }
+      populateCategorySelect(val);
+      input.value = '';
+      document.getElementById('customCategoryBox').classList.add('hidden');
+      showToast(`已新增分類「${val}」`);
+    }
+
+    async function handleSaveItem(event) {
+      event.preventDefault();
+      const id = document.getElementById('editingItemId').value;
+      const name = document.getElementById('itemNameInput').value.trim();
+      const category = document.getElementById('itemCategorySelect').value;
+      const volume = document.getElementById('itemVolumeInput').value.trim();
+      const expiryDate = document.getElementById('itemExpiryInput').value;
+      const unopenedCount = Math.max(0, parseInt(document.getElementById('itemUnopenedInput').value, 10) || 0);
+      const openedCount = Math.max(0, parseInt(document.getElementById('itemOpenedInput').value, 10) || 0);
+
+      if (!name || !expiryDate) return;
+
+      const sortedDates = [...modalTempOpenedDates].slice(0, openedCount).sort((a, b) => a.localeCompare(b));
+
+      let targetItem = null;
+      if (id) {
+        const idx = skincareItems.findIndex(i => i.id === id);
+        if (idx !== -1) {
+          skincareItems[idx] = normalizeItem({
+            ...skincareItems[idx],
+            name,
+            category,
+            volume,
+            expiryDate,
+            unopenedCount,
+            openedCount,
+            openedDates: sortedDates
+          });
+          targetItem = skincareItems[idx];
+        }
+        showToast('已更新保養品資訊！');
+      } else {
+        targetItem = normalizeItem({
+          id: 'item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+          name,
+          category,
+          volume,
+          expiryDate,
+          unopenedCount,
+          openedCount,
+          openedDates: sortedDates
+        });
+        skincareItems.push(targetItem);
+        showToast('已新增保養品！');
+      }
+
+      closeItemModal();
+      renderApp();
+      if (targetItem) {
+        await saveItemToCloud(targetItem);
+      }
+    }
+
+    /**********************************************************
+     * 刪除確認與 Safari 分享網址 / 雲端檔案匯出 Modal
+     **********************************************************/
+    function openDeleteModal(itemId) {
+      if (isReadOnlyMode) return;
+      const target = skincareItems.find(i => i.id === itemId);
+      if (!target) return;
+      pendingDeleteId = itemId;
+      document.getElementById('deleteConfirmText').textContent = `確定要將「${target.name}」從庫存本中移除嗎？`;
+      const modal = document.getElementById('deleteConfirmModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      document.getElementById('confirmDeleteBtn').onclick = async () => {
+        const delId = pendingDeleteId;
+        skincareItems = skincareItems.filter(i => i.id !== delId);
+        pendingDeleteId = null;
+        closeDeleteModal();
+        renderApp();
+        showToast('已刪除該品項');
+        if (delId) {
+          await deleteItemFromCloud(delId);
+        }
+      };
+    }
+
+    function closeDeleteModal() {
+      const modal = document.getElementById('deleteConfirmModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function openShareModal() {
+      const modal = document.getElementById('shareModalBackdrop');
+      const baseUrl = window.location.href.split('?')[0];
+
+      // 1. 雲端唯讀網址 (?mode=view)
+      const readOnlyUrl = `${baseUrl}?mode=view`;
+      document.getElementById('shareReadOnlyUrlInput').value = readOnlyUrl;
+
+      // 2. 雲端共同編輯網址
+      document.getElementById('shareEditUrlInput').value = baseUrl;
+
+      // 3. 攜帶目前庫存資料的快照網址 (?mode=view&data=...)
+      try {
+        const snapshotPayload = {
+          cats: categories,
+          items: skincareItems
+        };
+        const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(snapshotPayload))));
+        document.getElementById('shareSnapshotUrlInput').value = `${baseUrl}?mode=view&data=${encoded}`;
+      } catch (e) {
+        document.getElementById('shareSnapshotUrlInput').value = readOnlyUrl;
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeShareModal() {
+      const modal = document.getElementById('shareModalBackdrop');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 下載已內建雲端同步設定與目前庫存快照的獨立 HTML 檔（方便直接丟上 Tiiny.host 在 Safari 開啟）
+    function downloadStandaloneCloudHtml() {
+      try {
+        const fbConfigStr = typeof __firebase_config !== 'undefined' ? JSON.stringify(__firebase_config) : 'undefined';
+        const appIdStr = JSON.stringify(appId);
+        const snapshotItemsStr = JSON.stringify(skincareItems);
+        const snapshotCatsStr = JSON.stringify(categories);
+
+        const injectScript = `<script>
+          window.__app_id = ${appIdStr};
+          if (typeof __firebase_config === 'undefined') {
+            window.__firebase_config = ${fbConfigStr};
+          }
+          window.__INITIAL_SNAPSHOT_ITEMS = ${snapshotItemsStr};
+          window.__INITIAL_SNAPSHOT_CATS = ${snapshotCatsStr};
+        <\/script>`;
+
+        const fullHtml = '<!DOCTYPE html>\n<html lang="zh-TW">\n' +
+          document.documentElement.innerHTML.replace('<head>', '<head>\n' + injectScript) +
+          '\n</html>';
+
+        const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'index.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('📲 已下載 index.html！可上傳至 Tiiny.host 取得 Safari 網址');
+      } catch (e) {
+        console.error('匯出 HTML 失敗:', e);
+        showToast('下載失敗，請稍後再試');
+      }
+    }
+
+    function copyInputUrl(inputId, successMsg) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      showToast(successMsg);
+    }
+
+    async function resetToSampleData() {
+      isUsingUrlSnapshot = false;
+      categories = [...DEFAULT_CATEGORIES];
+      const samples = createSampleItems();
+      skincareItems = samples;
+      closeShareModal();
+      renderApp();
+      showToast('已還原預設範例資料！');
+      await seedInitialCloudData(samples, categories);
+    }
+
+    // 顯示上方輕量提示
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toastMessage');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2400);
+    }
+
+    // 防止 XSS 字元轉義
+    function escapeHtml(str) {
+      return String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // 掛載至全域 window 供 HTML inline 事件呼叫
+    Object.assign(window, {
+      switchMainView,
+      selectCategory,
+      clearSearch,
+      openCategoryManagerModal,
+      closeCategoryManagerModal,
+      addCategoryFromManager,
+      renameCategoryAt,
+      moveCategoryOrder,
+      deleteCategoryAt,
+      adjustUnopenedCount,
+      adjustOpenedCount,
+      openNewBottle,
+      openItemModal,
+      closeItemModal,
+      appendUnit,
+      setQuickExpiryMonths,
+      previewModalExpiryBadge,
+      stepFormUnopened,
+      stepFormOpened,
+      syncModalOpenedDatesCount,
+      updateModalOpenedDateAt,
+      toggleNewCategoryBox,
+      addCustomCategory,
+      handleSaveItem,
+      openDeleteModal,
+      closeDeleteModal,
+      openShareModal,
+      closeShareModal,
+      downloadStandaloneCloudHtml,
+      copyInputUrl,
+      resetToSampleData,
+      disableReadOnlyMode,
+      renderApp
+    });
+
+    // 啟動應用程式
+    initCloudSync();
+  </script>
+</body>
+</html>
