@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907504951,
+  "updatedAt": 1794907527759,
   "categories": [
     "TK",
     "精華液",
@@ -209,6 +209,16 @@
       "volume": "1罐",
       "expiryDate": "2027-06-09",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907527756-gnc4",
+      "name": "窈窕錠",
+      "category": "TK保健食品",
+      "volume": "1罐",
+      "expiryDate": "2027-06-05",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
