@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794901819727,
+  "updatedAt": 1794901824309,
   "categories": [
     "化妝水",
     "精華液",
@@ -30,18 +30,6 @@
       "openedCount": 1,
       "openedDates": [
         "2026-11-07"
-      ]
-    },
-    {
-      "id": "sample-4",
-      "name": "溫和胺基酸潔顏慕斯",
-      "category": "清潔/卸妝",
-      "volume": "150ml",
-      "expiryDate": "2028-05-10",
-      "unopenedCount": 3,
-      "openedCount": 1,
-      "openedDates": [
-        "2026-11-12"
       ]
     }
   ]
