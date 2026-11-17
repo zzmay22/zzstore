@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907595134,
+  "updatedAt": 1794907611251,
   "categories": [
     "TK",
     "精華液",
@@ -241,6 +241,16 @@
       "volume": "400ml",
       "expiryDate": "2029-07-08",
       "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907611244-tjur",
+      "name": "羊珞素潔顏露",
+      "category": "清潔/卸妝",
+      "volume": "150ml",
+      "expiryDate": "2027-08-13",
+      "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
     }
