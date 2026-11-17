@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907557088,
+  "updatedAt": 1794907595134,
   "categories": [
     "TK",
     "精華液",
@@ -233,6 +233,16 @@
       "openedDates": [
         "2026-11-01"
       ]
+    },
+    {
+      "id": "item-1794907595131-ov40",
+      "name": "TK胺基酸沐浴露",
+      "category": "清潔/卸妝",
+      "volume": "400ml",
+      "expiryDate": "2029-07-08",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
