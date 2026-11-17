@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907367386,
+  "updatedAt": 1794907404653,
   "categories": [
     "TK",
     "精華液",
@@ -167,6 +167,16 @@
       "category": "TK",
       "volume": "50ml",
       "expiryDate": "2028-08-19",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907404649-gswc",
+      "name": "A醇油",
+      "category": "TK",
+      "volume": "30ml",
+      "expiryDate": "2027-03-14",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
