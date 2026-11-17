@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907144957,
+  "updatedAt": 1794907194054,
   "categories": [
     "TK",
     "精華液",
@@ -86,6 +86,16 @@
       "volume": "55ml",
       "expiryDate": "2028-04-15",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907194052-sa82",
+      "name": "羊珞素",
+      "category": "TK",
+      "volume": "55ml",
+      "expiryDate": "2028-05-28",
+      "unopenedCount": 3,
       "openedCount": 0,
       "openedDates": []
     }
