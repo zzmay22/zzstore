@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907527759,
+  "updatedAt": 1794907557088,
   "categories": [
     "TK",
     "精華液",
@@ -221,6 +221,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1794907557083-1tae",
+      "name": "夜酵素",
+      "category": "TK保健食品",
+      "volume": "1罐",
+      "expiryDate": "2027-06-26",
+      "unopenedCount": 0,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-11-01"
+      ]
     }
   ]
 }
