@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1794907194054,
+  "updatedAt": 1794907218559,
   "categories": [
     "TK",
     "精華液",
@@ -96,6 +96,16 @@
       "volume": "55ml",
       "expiryDate": "2028-05-28",
       "unopenedCount": 3,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1794907218556-ucar",
+      "name": "羊珞素眼霜",
+      "category": "TK",
+      "volume": "20ml",
+      "expiryDate": "2028-02-16",
+      "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
     }
