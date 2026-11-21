@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795240033436,
+  "updatedAt": 1795240134474,
   "categories": [
     "TK",
     "精華液",
@@ -299,6 +299,16 @@
       "openedDates": [
         "2026-06-21"
       ]
+    },
+    {
+      "id": "item-1795240134465-pql3",
+      "name": "路得清A醇霜",
+      "category": "乳液/乳霜",
+      "volume": "50g",
+      "expiryDate": "2028-04-21",
+      "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
