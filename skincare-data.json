@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795242176626,
+  "updatedAt": 1795249382275,
   "categories": [
     "TK",
     "精華液",
@@ -439,6 +439,16 @@
       "openedDates": [
         "2025-11-21"
       ]
+    },
+    {
+      "id": "item-1795249382262-b9fe",
+      "name": "Cerave全效乳",
+      "category": "乳液/乳霜",
+      "volume": "52ml",
+      "expiryDate": "2028-03-21",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
