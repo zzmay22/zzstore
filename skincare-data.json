@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795250695370,
+  "updatedAt": 1795251145238,
   "categories": [
     "TK",
     "精華液",
@@ -562,6 +562,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795251145234-178b",
+      "name": "多芬石榴磨砂膏",
+      "category": "清潔/卸妝",
+      "volume": "298g",
+      "expiryDate": "2029-04-10",
+      "unopenedCount": 3,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-09-04"
+      ]
     }
   ]
 }
