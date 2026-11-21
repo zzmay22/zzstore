@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795253847244,
+  "updatedAt": 1795254105882,
   "categories": [
     "TK",
     "精華液",
@@ -689,6 +689,18 @@
       "openedCount": 1,
       "openedDates": [
         "2026-10-24"
+      ]
+    },
+    {
+      "id": "item-1795254105877-vvwj",
+      "name": "德國頭皮液",
+      "category": "護髮產品",
+      "volume": "75ml",
+      "expiryDate": "2027-11-21",
+      "unopenedCount": 2,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-05-07"
       ]
     }
   ]
