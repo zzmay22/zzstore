@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795242120427,
+  "updatedAt": 1795242176626,
   "categories": [
     "TK",
     "精華液",
@@ -427,6 +427,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795242176608-fbip",
+      "name": "Fancl卸妝油",
+      "category": "清潔/卸妝",
+      "volume": "120ml",
+      "expiryDate": "2027-10-22",
+      "unopenedCount": 1,
+      "openedCount": 1,
+      "openedDates": [
+        "2025-11-21"
+      ]
     }
   ]
 }
