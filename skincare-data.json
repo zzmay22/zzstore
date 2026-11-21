@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795240610017,
+  "updatedAt": 1795240799727,
   "categories": [
     "TK",
     "精華液",
@@ -349,6 +349,16 @@
       "volume": "1片",
       "expiryDate": "2028-03-21",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795240799717-8nla",
+      "name": "Balea玻尿酸保濕精華膠囊",
+      "category": "精華液",
+      "volume": "1片",
+      "expiryDate": "2028-06-29",
+      "unopenedCount": 10,
       "openedCount": 0,
       "openedDates": []
     }
