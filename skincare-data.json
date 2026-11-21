@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795249953005,
+  "updatedAt": 1795250054990,
   "categories": [
     "TK",
     "精華液",
@@ -466,6 +466,16 @@
       "category": "面膜",
       "volume": "7片",
       "expiryDate": "2029-05-31",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795250054976-eqcu",
+      "name": "Clear Turn 光映透 集中調理禦痘面膜（7 枚入）",
+      "category": "面膜",
+      "volume": "7片",
+      "expiryDate": "2029-11-19",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
