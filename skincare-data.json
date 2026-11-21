@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795254219115,
+  "updatedAt": 1795254294157,
   "categories": [
     "TK",
     "精華液",
@@ -716,6 +716,16 @@
       "openedDates": [
         "2026-09-18"
       ]
+    },
+    {
+      "id": "item-1795254294149-nsm6",
+      "name": "凱夢果酸護髮精華",
+      "category": "護髮產品",
+      "volume": "120ml",
+      "expiryDate": "2029-03-29",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
