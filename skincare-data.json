@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795240297692,
+  "updatedAt": 1795240566795,
   "categories": [
     "TK",
     "精華液",
@@ -331,6 +331,16 @@
       "openedDates": [
         "2026-06-21"
       ]
+    },
+    {
+      "id": "item-1795240566784-wjum",
+      "name": "Balea藍色面膜",
+      "category": "面膜",
+      "volume": "1片",
+      "expiryDate": "2028-09-27",
+      "unopenedCount": 4,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
