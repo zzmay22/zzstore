@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795253527584,
+  "updatedAt": 1795253631908,
   "categories": [
     "TK",
     "精華液",
@@ -643,6 +643,16 @@
       "category": "護髮產品",
       "volume": "75ml",
       "expiryDate": "2028-05-29",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795253631903-rx7s",
+      "name": "全洗髮精",
+      "category": "洗髮精",
+      "volume": "400ml",
+      "expiryDate": "2029-06-30",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
