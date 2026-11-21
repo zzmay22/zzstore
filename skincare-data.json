@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795250591112,
+  "updatedAt": 1795250657413,
   "categories": [
     "TK",
     "精華液",
@@ -547,6 +547,16 @@
       "category": "小樣",
       "volume": "5ml",
       "expiryDate": "2028-05-21",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795250657409-ghwl",
+      "name": "雅漾溫泉噴霧",
+      "category": "精華液",
+      "volume": "300ml",
+      "expiryDate": "2027-11-21",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
