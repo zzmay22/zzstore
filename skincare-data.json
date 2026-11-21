@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795253215871,
+  "updatedAt": 1795253290097,
   "categories": [
     "TK",
     "精華液",
@@ -613,6 +613,16 @@
       "category": "護髮產品",
       "volume": "250ml",
       "expiryDate": "2029-05-25",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795253290093-ft89",
+      "name": "多芬橘色髮膜",
+      "category": "護髮產品",
+      "volume": "260g",
+      "expiryDate": "2029-03-27",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
