@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795254879845,
+  "updatedAt": 1795254932483,
   "categories": [
     "TK",
     "精華液",
@@ -758,6 +758,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795254932480-cc6g",
+      "name": "Diane粉紅洗髮精",
+      "category": "洗髮精",
+      "volume": "400ml",
+      "expiryDate": "2028-11-01",
+      "unopenedCount": 1,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-09-01"
+      ]
     }
   ]
 }
