@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795249811177,
+  "updatedAt": 1795249953005,
   "categories": [
     "TK",
     "精華液",
@@ -456,6 +456,16 @@
       "category": "清潔/卸妝",
       "volume": "130g",
       "expiryDate": "2027-06-30",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795249952992-o5zl",
+      "name": "LuLuLun Hydra-EX Mask 紫色外泌體水潤彈力面膜",
+      "category": "面膜",
+      "volume": "7片",
+      "expiryDate": "2029-05-31",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
