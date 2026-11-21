@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795254932483,
+  "updatedAt": 1795254979616,
   "categories": [
     "TK",
     "精華液",
@@ -770,6 +770,16 @@
       "openedDates": [
         "2026-09-01"
       ]
+    },
+    {
+      "id": "item-1795254979614-f5dh",
+      "name": "髮之鑰紫色洗髮精",
+      "category": "洗髮精",
+      "volume": "510g",
+      "expiryDate": "2028-06-11",
+      "unopenedCount": 3,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
