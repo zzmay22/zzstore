@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795258022139,
+  "updatedAt": 1795258084479,
   "categories": [
     "TK",
     "精華液",
@@ -812,6 +812,16 @@
       "openedDates": [
         "2026-10-01"
       ]
+    },
+    {
+      "id": "item-1795258084475-fbxd",
+      "name": "露得清美白面膜",
+      "category": "面膜",
+      "volume": "1片",
+      "expiryDate": "2027-12-13",
+      "unopenedCount": 8,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
