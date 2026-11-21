@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795240566795,
+  "updatedAt": 1795240610017,
   "categories": [
     "TK",
     "精華液",
@@ -339,6 +339,16 @@
       "volume": "1片",
       "expiryDate": "2028-09-27",
       "unopenedCount": 4,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795240610007-omqv",
+      "name": "Garnier面膜",
+      "category": "面膜",
+      "volume": "1片",
+      "expiryDate": "2028-03-21",
+      "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
     }
