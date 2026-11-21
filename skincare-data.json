@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795253731653,
+  "updatedAt": 1795253783409,
   "categories": [
     "TK",
     "精華液",
@@ -666,6 +666,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795253783405-agdx",
+      "name": "潘婷3分鐘小髮膜",
+      "category": "護髮產品",
+      "volume": "70ml",
+      "expiryDate": "2028-12-29",
+      "unopenedCount": 0,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-03-27"
+      ]
     }
   ]
 }
