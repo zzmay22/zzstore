@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795253783409,
+  "updatedAt": 1795253847244,
   "categories": [
     "TK",
     "精華液",
@@ -677,6 +677,18 @@
       "openedCount": 1,
       "openedDates": [
         "2026-03-27"
+      ]
+    },
+    {
+      "id": "item-1795253847237-0a2n",
+      "name": "Lux小髮油",
+      "category": "護髮產品",
+      "volume": "30ml",
+      "expiryDate": "2029-05-16",
+      "unopenedCount": 0,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-10-24"
       ]
     }
   ]
