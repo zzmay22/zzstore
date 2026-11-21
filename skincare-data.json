@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795251222212,
+  "updatedAt": 1795253069795,
   "categories": [
     "TK",
     "精華液",
@@ -586,6 +586,16 @@
       "openedDates": [
         "2026-11-01"
       ]
+    },
+    {
+      "id": "item-1795253069791-mbz2",
+      "name": "凡士林粉紅身體乳小",
+      "category": "乳液/乳霜",
+      "volume": "70ml",
+      "expiryDate": "2028-03-24",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
