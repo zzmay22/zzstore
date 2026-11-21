@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795241992545,
+  "updatedAt": 1795242060380,
   "categories": [
     "TK",
     "精華液",
@@ -401,6 +401,18 @@
       "volume": "1罐",
       "expiryDate": "2028-05-21",
       "unopenedCount": 3,
+      "openedCount": 1,
+      "openedDates": [
+        "2025-11-21"
+      ]
+    },
+    {
+      "id": "item-1795242060368-83m2",
+      "name": "朵璽毛孔收斂水",
+      "category": "精華液",
+      "volume": "50ml",
+      "expiryDate": "2027-09-04",
+      "unopenedCount": 1,
       "openedCount": 1,
       "openedDates": [
         "2025-11-21"
