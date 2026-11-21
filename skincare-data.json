@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795249382275,
+  "updatedAt": 1795249811177,
   "categories": [
     "TK",
     "精華液",
@@ -446,6 +446,16 @@
       "category": "乳液/乳霜",
       "volume": "52ml",
       "expiryDate": "2028-03-21",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795249811163-8msd",
+      "name": "C洗面乳",
+      "category": "清潔/卸妝",
+      "volume": "130g",
+      "expiryDate": "2027-06-30",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
