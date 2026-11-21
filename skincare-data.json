@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795239861195,
+  "updatedAt": 1795239955658,
   "categories": [
     "TK",
     "精華液",
@@ -275,6 +275,18 @@
       "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795239955647-yspj",
+      "name": "仙人掌棉片",
+      "category": "清潔/卸妝",
+      "volume": "1罐",
+      "expiryDate": "2029-06-12",
+      "unopenedCount": 3,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-06-21"
+      ]
     }
   ]
 }
