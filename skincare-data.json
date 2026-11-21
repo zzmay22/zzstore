@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795250443335,
+  "updatedAt": 1795250546093,
   "categories": [
     "TK",
     "精華液",
@@ -528,6 +528,16 @@
       "volume": "5ml",
       "expiryDate": "2027-04-30",
       "unopenedCount": 10,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795250546090-67b2",
+      "name": "朵璽熬夜霜",
+      "category": "小樣",
+      "volume": "2ml",
+      "expiryDate": "2028-09-26",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
