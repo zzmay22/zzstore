@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795239955658,
+  "updatedAt": 1795240033436,
   "categories": [
     "TK",
     "精華液",
@@ -283,6 +283,18 @@
       "volume": "1罐",
       "expiryDate": "2029-06-12",
       "unopenedCount": 3,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-06-21"
+      ]
+    },
+    {
+      "id": "item-1795240033427-ect3",
+      "name": "仙人掌夜光霜",
+      "category": "乳液/乳霜",
+      "volume": "50g",
+      "expiryDate": "2029-03-10",
+      "unopenedCount": 1,
       "openedCount": 1,
       "openedDates": [
         "2026-06-21"
