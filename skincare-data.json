@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795240222482,
+  "updatedAt": 1795240297692,
   "categories": [
     "TK",
     "精華液",
@@ -319,6 +319,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795240297683-7x1n",
+      "name": "露得清A醇顏霜",
+      "category": "乳液/乳霜",
+      "volume": "15g",
+      "expiryDate": "2028-03-14",
+      "unopenedCount": 1,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-06-21"
+      ]
     }
   ]
 }
