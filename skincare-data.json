@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795241454626,
+  "updatedAt": 1795241668110,
   "categories": [
     "TK",
     "精華液",
@@ -381,6 +381,16 @@
       "volume": "15ml",
       "expiryDate": "2027-12-21",
       "unopenedCount": 4,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795241668096-5f7x",
+      "name": "Balea強效神經醯胺精華液",
+      "category": "精華液",
+      "volume": "30ml",
+      "expiryDate": "2028-07-29",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
