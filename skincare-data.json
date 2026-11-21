@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795253394619,
+  "updatedAt": 1795253527584,
   "categories": [
     "TK",
     "精華液",
@@ -633,6 +633,16 @@
       "category": "護髮產品",
       "volume": "1罐",
       "expiryDate": "2028-04-29",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795253527580-chzg",
+      "name": "巴黎萊雅pro髮膜",
+      "category": "護髮產品",
+      "volume": "75ml",
+      "expiryDate": "2028-05-29",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
