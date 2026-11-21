@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795253290097,
+  "updatedAt": 1795253394619,
   "categories": [
     "TK",
     "精華液",
@@ -623,6 +623,16 @@
       "category": "護髮產品",
       "volume": "260g",
       "expiryDate": "2029-03-27",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795253394614-r5es",
+      "name": "潘婷髮油膠囊",
+      "category": "護髮產品",
+      "volume": "1罐",
+      "expiryDate": "2028-04-29",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
