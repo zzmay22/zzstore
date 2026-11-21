@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795250546093,
+  "updatedAt": 1795250591112,
   "categories": [
     "TK",
     "精華液",
@@ -537,6 +537,16 @@
       "category": "小樣",
       "volume": "2ml",
       "expiryDate": "2028-09-26",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795250591110-9f1c",
+      "name": "朵璽保濕精華",
+      "category": "小樣",
+      "volume": "5ml",
+      "expiryDate": "2028-05-21",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
