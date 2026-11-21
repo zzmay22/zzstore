@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795240918617,
+  "updatedAt": 1795241454626,
   "categories": [
     "TK",
     "精華液",
@@ -373,6 +373,16 @@
       "openedDates": [
         "2026-11-21"
       ]
+    },
+    {
+      "id": "item-1795241454613-eiu9",
+      "name": "BaleaQ10 抗皺眼霜",
+      "category": "乳液/乳霜",
+      "volume": "15ml",
+      "expiryDate": "2027-12-21",
+      "unopenedCount": 4,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
