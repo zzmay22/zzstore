@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795250192559,
+  "updatedAt": 1795250240011,
   "categories": [
     "TK",
     "精華液",
@@ -497,6 +497,16 @@
       "volume": "1片",
       "expiryDate": "2028-11-03",
       "unopenedCount": 5,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795250240008-u62v",
+      "name": "TK保濕面膜",
+      "category": "面膜",
+      "volume": "1盒",
+      "expiryDate": "2028-03-13",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
