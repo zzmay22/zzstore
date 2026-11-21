@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795241668110,
+  "updatedAt": 1795241992545,
   "categories": [
     "TK",
     "精華液",
@@ -393,6 +393,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795241992533-8sqy",
+      "name": "Balea蘆薈敏感護理護唇膏",
+      "category": "乳液/乳霜",
+      "volume": "1罐",
+      "expiryDate": "2028-05-21",
+      "unopenedCount": 3,
+      "openedCount": 1,
+      "openedDates": [
+        "2025-11-21"
+      ]
     }
   ]
 }
