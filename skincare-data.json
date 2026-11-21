@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795255055082,
+  "updatedAt": 1795255148043,
   "categories": [
     "TK",
     "精華液",
@@ -788,6 +788,16 @@
       "volume": "55g",
       "expiryDate": "2027-12-12",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795255148037-ett0",
+      "name": "艾瑪絲洗髮組",
+      "category": "洗髮精",
+      "volume": "2罐",
+      "expiryDate": "2030-05-21",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
