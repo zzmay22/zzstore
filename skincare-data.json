@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795253631908,
+  "updatedAt": 1795253731653,
   "categories": [
     "TK",
     "精華液",
@@ -653,6 +653,16 @@
       "category": "洗髮精",
       "volume": "400ml",
       "expiryDate": "2029-06-30",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795253731649-r18k",
+      "name": "Lux紫色髮膜",
+      "category": "護髮產品",
+      "volume": "180g",
+      "expiryDate": "2028-01-28",
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
