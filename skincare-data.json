@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795254294157,
+  "updatedAt": 1795254401527,
   "categories": [
     "TK",
     "精華液",
@@ -726,6 +726,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795254401521-hfyt",
+      "name": "巴黎萊雅綠色髮油",
+      "category": "護髮產品",
+      "volume": "100ml",
+      "expiryDate": "2028-07-31",
+      "unopenedCount": 1,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-06-12"
+      ]
     }
   ]
 }
