@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795242060380,
+  "updatedAt": 1795242120427,
   "categories": [
     "TK",
     "精華液",
@@ -417,6 +417,16 @@
       "openedDates": [
         "2025-11-21"
       ]
+    },
+    {
+      "id": "item-1795242120415-e9ar",
+      "name": "朵璽保濕針",
+      "category": "精華液",
+      "volume": "6.5ml",
+      "expiryDate": "2026-10-30",
+      "unopenedCount": 1,
+      "openedCount": 0,
+      "openedDates": []
     }
   ]
 }
