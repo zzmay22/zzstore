@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795255148043,
+  "updatedAt": 1795258022139,
   "categories": [
     "TK",
     "精華液",
@@ -800,6 +800,18 @@
       "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
+    },
+    {
+      "id": "item-1795258022135-8n6r",
+      "name": "貝膚黛瑪卸妝水",
+      "category": "清潔/卸妝",
+      "volume": "850ml",
+      "expiryDate": "2028-12-31",
+      "unopenedCount": 0,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-10-01"
+      ]
     }
   ]
 }
