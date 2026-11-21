@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795254796359,
+  "updatedAt": 1795254879845,
   "categories": [
     "TK",
     "精華液",
@@ -746,6 +746,16 @@
       "volume": "100ml",
       "expiryDate": "2028-04-05",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795254879839-v21x",
+      "name": "京喚羽護髮",
+      "category": "護髮產品",
+      "volume": "400g",
+      "expiryDate": "2029-05-31",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
