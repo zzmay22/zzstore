@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795240134474,
+  "updatedAt": 1795240222482,
   "categories": [
     "TK",
     "精華液",
@@ -307,6 +307,16 @@
       "volume": "50g",
       "expiryDate": "2028-04-21",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795240222473-bhqn",
+      "name": "朵璽杏仁酸10%",
+      "category": "精華液",
+      "volume": "60ml",
+      "expiryDate": "2028-09-09",
+      "unopenedCount": 1,
       "openedCount": 0,
       "openedDates": []
     }
