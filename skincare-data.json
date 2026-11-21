@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795254979616,
+  "updatedAt": 1795255055082,
   "categories": [
     "TK",
     "精華液",
@@ -778,6 +778,16 @@
       "volume": "510g",
       "expiryDate": "2028-06-11",
       "unopenedCount": 3,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795255055076-y6mu",
+      "name": "髮之鑰頭皮精華",
+      "category": "護髮產品",
+      "volume": "55g",
+      "expiryDate": "2027-12-12",
+      "unopenedCount": 2,
       "openedCount": 0,
       "openedDates": []
     }
