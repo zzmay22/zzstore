@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795250365717,
+  "updatedAt": 1795250443335,
   "categories": [
     "TK",
     "精華液",
@@ -518,6 +518,16 @@
       "volume": "1片",
       "expiryDate": "2027-11-04",
       "unopenedCount": 2,
+      "openedCount": 0,
+      "openedDates": []
+    },
+    {
+      "id": "item-1795250443333-dn94",
+      "name": "雅漾抗痘精華",
+      "category": "小樣",
+      "volume": "5ml",
+      "expiryDate": "2027-04-30",
+      "unopenedCount": 10,
       "openedCount": 0,
       "openedDates": []
     }
