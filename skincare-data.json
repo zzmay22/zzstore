@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795254135846,
+  "updatedAt": 1795254219115,
   "categories": [
     "TK",
     "精華液",
@@ -703,6 +703,18 @@
       "openedCount": 1,
       "openedDates": [
         "2026-05-07"
+      ]
+    },
+    {
+      "id": "item-1795254219109-qw52",
+      "name": "Celluver護髮素",
+      "category": "護髮產品",
+      "volume": "300ml",
+      "expiryDate": "2028-03-30",
+      "unopenedCount": 3,
+      "openedCount": 1,
+      "openedDates": [
+        "2026-09-18"
       ]
     }
   ]
