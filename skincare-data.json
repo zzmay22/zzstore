@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795254105882,
+  "updatedAt": 1795254135846,
   "categories": [
     "TK",
     "精華液",
@@ -594,8 +594,10 @@
       "volume": "70ml",
       "expiryDate": "2028-03-24",
       "unopenedCount": 1,
-      "openedCount": 0,
-      "openedDates": []
+      "openedCount": 1,
+      "openedDates": [
+        "2026-10-24"
+      ]
     },
     {
       "id": "item-1795253175536-cuts",
