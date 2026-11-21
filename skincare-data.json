@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795239851380,
+  "updatedAt": 1795239861195,
   "categories": [
     "TK",
     "精華液",
@@ -77,8 +77,10 @@
       "volume": "55ml",
       "expiryDate": "2027-07-10",
       "unopenedCount": 1,
-      "openedCount": 0,
-      "openedDates": []
+      "openedCount": 1,
+      "openedDates": [
+        "2026-11-01"
+      ]
     },
     {
       "id": "item-1794907144955-lum1",
