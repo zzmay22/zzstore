@@ -1,6 +1,6 @@
 {
   "hasInitialized": true,
-  "updatedAt": 1795833195231,
+  "updatedAt": 1795833260005,
   "categories": [
     "TK",
     "精華液",
@@ -531,7 +531,7 @@
       "category": "小樣",
       "volume": "5ml",
       "expiryDate": "2027-04-30",
-      "unopenedCount": 14,
+      "unopenedCount": 13,
       "openedCount": 1,
       "openedDates": [
         "2026-11-28"
